@@ -157,13 +157,13 @@ font: 75 14pt &quot;Calibri&quot;;</string>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color: rgb(35, 61, 188); border : none;</string>
          </property>
          <property name="text">
           <string>PushButton</string>
          </property>
          <property name="flat">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -176,13 +176,13 @@ font: 75 14pt &quot;Calibri&quot;;</string>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color: rgb(35, 61, 188); border : none;</string>
          </property>
          <property name="text">
           <string>PushButton</string>
          </property>
          <property name="flat">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -195,13 +195,13 @@ font: 75 14pt &quot;Calibri&quot;;</string>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color: rgb(35, 61, 188); border : none;</string>
          </property>
          <property name="text">
           <string>PushButton</string>
          </property>
          <property name="flat">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -214,13 +214,13 @@ font: 75 14pt &quot;Calibri&quot;;</string>
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color : red;</string>
+          <string notr="true">background-color: rgb(35, 61, 188); border : none;</string>
          </property>
          <property name="text">
           <string>PushButton</string>
          </property>
          <property name="flat">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>

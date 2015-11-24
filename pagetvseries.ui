@@ -139,7 +139,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
     <item>
      <widget class="QFrame" name="frameNews">
       <property name="styleSheet">
-       <string notr="true">background-color : #8f9aff</string>
+       <string notr="true">background-color: rgb(143, 154, 255);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>

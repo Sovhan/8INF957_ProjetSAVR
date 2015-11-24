@@ -50,7 +50,7 @@ border : none;</string>
     <item>
      <widget class="QPushButton" name="MenuBtn_2">
       <property name="styleSheet">
-       <string notr="true">height : 100%; font: 75 18pt &quot;Calibri&quot;;</string>
+       <string notr="true">height : 100%; font: 75 18pt &quot;Calibri&quot;; border-right : 1px solid black;</string>
       </property>
       <property name="text">
        <string>...</string>
@@ -97,7 +97,7 @@ border : none;</string>
     <item>
      <widget class="QLabel" name="SAVRLbl_2">
       <property name="styleSheet">
-       <string notr="true">font: 75 18pt &quot;Calibri&quot;;</string>
+       <string notr="true">font: 75 18pt &quot;Calibri&quot;; border-left : 1px solid black;</string>
       </property>
       <property name="text">
        <string>S.A.V.R</string>
@@ -135,7 +135,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,3">
     <item>
      <widget class="QFrame" name="frameNews">
       <property name="styleSheet">

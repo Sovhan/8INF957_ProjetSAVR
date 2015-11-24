@@ -11,12 +11,12 @@ class PageAccueil : public QWidget
 {
     Q_OBJECT
 
-public:
-    explicit PageAccueil(QWidget *parent = 0);
-    ~PageAccueil();
+    public:
+        explicit PageAccueil(QWidget *parent = 0);
+        ~PageAccueil();
 
-private:
-    Ui::PageAccueil *ui;
+    private:
+        Ui::PageAccueil *ui;
 };
 
 #endif // PAGEACCUEIL_H

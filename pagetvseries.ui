@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>801</width>
-     <height>91</height>
+     <height>50</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -47,6 +47,21 @@ border : none;</string>
     <enum>QFrame::Raised</enum>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QPushButton" name="MenuBtn_2">
       <property name="styleSheet">
@@ -60,7 +75,7 @@ border : none;</string>
     <item>
      <widget class="QPushButton" name="HomeBtn_2">
       <property name="styleSheet">
-       <string notr="true">height : 81px;  background-color : #5f5f5f</string>
+       <string notr="true">height:100%; background-color : #5f5f5f</string>
       </property>
       <property name="text">
        <string>Home</string>
@@ -113,9 +128,9 @@ border : none;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>90</y>
+     <y>50</y>
      <width>800</width>
-     <height>511</height>
+     <height>551</height>
     </rect>
    </property>
    <property name="minimumSize">

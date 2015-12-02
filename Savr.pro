@@ -17,17 +17,23 @@ SOURCES += main.cpp\
     pageanime.cpp \
     pagebooks.cpp \
     pagepodcasts.cpp \
-    pagetvseries.cpp
+    pagetvseries.cpp \
+    pageonetvserie.cpp \
+    pageaccueilcontent.cpp
 
 HEADERS  += pageaccueil.h \
     pageanime.h \
     colors.h \
     pagebooks.h \
     pagepodcasts.h \
-    pagetvseries.h
+    pagetvseries.h \
+    pageonetvserie.h \
+    pageaccueilcontent.h
 
 FORMS    += pageaccueil.ui \
     pageanime.ui \
     pagebooks.ui \
     pagepodcasts.ui \
-    pagetvseries.ui
+    pagetvseries.ui \
+    pageonetvserie.ui \
+    pageaccueilcontent.ui

@@ -15,13 +15,19 @@ TEMPLATE = app
 SOURCES += main.cpp\
         pageaccueil.cpp \
     pagetvseries.cpp \
-    pageanime.cpp
+    pageanime.cpp \
+    pagebooks.cpp \
+    pagepodcasts.cpp
 
 HEADERS  += pageaccueil.h \
     pagetvseries.h \
     pageanime.h \
-    colors.h
+    colors.h \
+    pagebooks.h \
+    pagepodcasts.h
 
 FORMS    += pageaccueil.ui \
     pagetvseries.ui \
-    pageanime.ui
+    pageanime.ui \
+    pagebooks.ui \
+    pagepodcasts.ui

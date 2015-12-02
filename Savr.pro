@@ -14,10 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         pageaccueil.cpp \
-    pagetvseries.cpp
+    pagetvseries.cpp \
+    pageanime.cpp
 
 HEADERS  += pageaccueil.h \
-    pagetvseries.h
+    pagetvseries.h \
+    pageanime.h \
+    colors.h
 
 FORMS    += pageaccueil.ui \
-    pagetvseries.ui
+    pagetvseries.ui \
+    pageanime.ui

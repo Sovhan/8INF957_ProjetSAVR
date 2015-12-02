@@ -6,16 +6,18 @@ PageAccueil::PageAccueil(QWidget *parent) :
     ui(new Ui::PageAccueil)
 {
     ui->setupUi(this);
+    stackedWidget = new QStackedWidget;
+
 }
 
 PageAccueil::~PageAccueil()
 {
     delete ui;
+    delete stackedWidget;
 }
 
 void PageAccueil::on_Series_released()
 {
     PageTVSeries pageTvSeries;
-    pageTvSeries.setModal(true);
-    pageTvSeries.exec();
+    stackedWidget->addWidget(pageTvSeries);
 }

@@ -1,13 +1,13 @@
 #ifndef PAGETVSERIES_H
 #define PAGETVSERIES_H
 
-#include <QDialog>
+#include <QWidget>
 
 namespace Ui {
 class PageTVSeries;
 }
 
-class PageTVSeries : public QDialog
+class PageTVSeries : public QWidget
 {
     Q_OBJECT
 

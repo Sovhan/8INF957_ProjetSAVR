@@ -1,6 +1,5 @@
 #include "pageaccueil.h"
 #include "ui_pageaccueil.h"
-#include "pagetvseries.h"
 PageAccueil::PageAccueil(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PageAccueil)
@@ -15,7 +14,5 @@ PageAccueil::~PageAccueil()
 
 void PageAccueil::on_Series_released()
 {
-    PageTVSeries pageTvSeries;
-    pageTvSeries.setModal(true);
-    pageTvSeries.exec();
+
 }

@@ -132,11 +132,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
     </item>
    </layout>
   </widget>
-<<<<<<< HEAD
   <widget class="QStackedWidget" name="stackedWidget">
-=======
-  <widget class="QWidget" name="widgetContent" native="true">
->>>>>>> 054838c0606bfbc54d4293050b0cb521ed2af06e
    <property name="geometry">
     <rect>
      <x>-1</x>
@@ -145,15 +141,11 @@ font: 75 14pt &quot;Calibri&quot;;</string>
      <height>551</height>
     </rect>
    </property>
-<<<<<<< HEAD
    <property name="currentIndex">
     <number>0</number>
    </property>
    <widget class="QWidget" name="page"/>
    <widget class="QWidget" name="page_2"/>
-=======
-   <layout class="QHBoxLayout" name="horizontalLayout_2"/>
->>>>>>> 054838c0606bfbc54d4293050b0cb521ed2af06e
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

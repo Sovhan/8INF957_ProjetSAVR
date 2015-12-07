@@ -15,8 +15,13 @@ class PageAccueil : public QWidget
         explicit PageAccueil(QWidget *parent = 0);
         ~PageAccueil();
 
+private slots:
+    void on_HomeBtn_pressed();
+
 private:
         Ui::PageAccueil *ui;
+        QWidget* parent;
+
 };
 
 #endif // PAGEACCUEIL_H

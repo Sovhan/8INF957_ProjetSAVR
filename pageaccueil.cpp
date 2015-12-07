@@ -12,11 +12,12 @@ PageAccueil::PageAccueil(QWidget *parent) :
     ui(new Ui::PageAccueil)
 {
     ui->setupUi(this);
-    QWidget *pageAccueilContent = new PageAccueilContent(parent);
-    QWidget *pageAnime = new PageAnime(parent);
-    QWidget *pageBooks = new PageBooks(parent);
-    QWidget *pagePodcasts = new PagePodcasts(parent);
-    QWidget *pageTVSeries = new PageTVSeries(parent);
+    QWidget* stackOfWidgets = ui->stackedWidget;
+    QWidget* pageAccueilContent = new PageAccueilContent(stackOfWidgets);
+    QWidget* pageAnime = new PageAnime(stackOfWidgets);
+    QWidget* pageBooks = new PageBooks(stackOfWidgets);
+    QWidget* pagePodcasts = new PagePodcasts(stackOfWidgets);
+    QWidget* pageTVSeries = new PageTVSeries(stackOfWidgets);
     ui->stackedWidget->addWidget(pageAccueilContent);
     ui->stackedWidget->addWidget(pageAnime);
     ui->stackedWidget->addWidget(pageBooks);
@@ -27,4 +28,9 @@ PageAccueil::PageAccueil(QWidget *parent) :
 PageAccueil::~PageAccueil()
 {
     delete ui;
+}
+
+void PageAccueil::on_HomeBtn_pressed()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }

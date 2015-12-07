@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::PageBooks *ui;
+    QWidget* parent;
+
 };
 
 #endif // PAGEBOOKS_H

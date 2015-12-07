@@ -35,7 +35,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color : #233dbc;
+    <string notr="true">background-color : #e6e6e6;
 color : white;
 font: 75 20pt &quot;Calibri&quot;;</string>
    </property>

@@ -12,3 +12,4 @@ PageAnime::~PageAnime()
 {
     delete ui;
 }
+

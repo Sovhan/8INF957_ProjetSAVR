@@ -15,9 +15,6 @@ class PageAccueil : public QWidget
         explicit PageAccueil(QWidget *parent = 0);
         ~PageAccueil();
 
-private slots:
-    void on_Series_released();
-
 private:
         Ui::PageAccueil *ui;
 };

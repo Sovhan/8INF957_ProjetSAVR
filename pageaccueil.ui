@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>801</width>
+    <width>800</width>
     <height>600</height>
    </rect>
   </property>
@@ -135,17 +135,21 @@ font: 75 14pt &quot;Calibri&quot;;</string>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>-1</x>
-     <y>49</y>
-     <width>801</width>
-     <height>551</height>
+     <x>0</x>
+     <y>50</y>
+     <width>800</width>
+     <height>550</height>
     </rect>
    </property>
-   <property name="currentIndex">
-    <number>0</number>
+   <property name="minimumSize">
+    <size>
+     <width>800</width>
+     <height>500</height>
+    </size>
    </property>
-   <widget class="QWidget" name="page"/>
-   <widget class="QWidget" name="page_2"/>
+   <property name="currentIndex">
+    <number>-1</number>
+   </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

@@ -24,7 +24,7 @@ SOURCES += main.cpp\
     model/book.cpp \
     model/serie.cpp \
     model/anime.cpp \
-    model/podcast.cpp
+    model/podcast.cpp \
     pagetvseries.cpp \
     pageonetvserie.cpp \
     pageaccueilcontent.cpp
@@ -42,7 +42,7 @@ HEADERS  += pageaccueil.h \
     model/book.h \
     model/serie.h \
     model/anime.h \
-    model/podcast.h
+    model/podcast.h \
     pagetvseries.h \
     pageonetvserie.h \
     pageaccueilcontent.h

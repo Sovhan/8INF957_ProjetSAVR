@@ -132,89 +132,20 @@ font: 75 14pt &quot;Calibri&quot;;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QFrame" name="frameContent">
+  <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>50</y>
+     <x>-1</x>
+     <y>49</y>
      <width>801</width>
-     <height>541</height>
+     <height>551</height>
     </rect>
    </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,4">
-    <item row="0" column="0">
-     <widget class="QFrame" name="frameMenu">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QFrame" name="frameContents">
-      <property name="styleSheet">
-       <string notr="true">color : white;
-font: 75 20pt &quot;Calibri&quot;;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="Series">
-         <property name="styleSheet">
-          <string notr="true">height : 100%; background-color : #233dbc;</string>
-         </property>
-         <property name="text">
-          <string>TV Series</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="Anime">
-         <property name="styleSheet">
-          <string notr="true">height : 100%; background-color : #b21328;</string>
-         </property>
-         <property name="text">
-          <string>Anime</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="Podcasts">
-         <property name="styleSheet">
-          <string notr="true">height : 100%; background-color : #336633;</string>
-         </property>
-         <property name="text">
-          <string>Podcasts</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="Books">
-         <property name="styleSheet">
-          <string notr="true">height : 100%; background-color : #330066</string>
-         </property>
-         <property name="text">
-          <string>Books</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QWidget" name="page"/>
+   <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

@@ -2,7 +2,6 @@
 #define PAGEACCUEIL_H
 
 #include <QWidget>
-#include <QStackedWidget>
 
 namespace Ui {
 class PageAccueil;
@@ -21,7 +20,6 @@ private slots:
 
 private:
         Ui::PageAccueil *ui;
-        QStackedWidget *stackedWidget;
 };
 
 #endif // PAGEACCUEIL_H

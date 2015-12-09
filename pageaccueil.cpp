@@ -32,5 +32,11 @@ PageAccueil::~PageAccueil()
 
 void PageAccueil::on_HomeBtn_pressed()
 {
+    if(ui->stackedWidget->count()>5){
+        int i;
+        for(i=5;i<ui->stackedWidget->count();i++){
+            ui->stackedWidget->removeWidget(ui->stackedWidget->widget(i));
+        }
+    }
     ui->stackedWidget->setCurrentIndex(0);
 }

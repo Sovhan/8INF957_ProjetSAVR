@@ -7,7 +7,7 @@ class Element : public QObject
 {
     Q_OBJECT
 
-private:
+protected:
     QString title;
     quint32 number;
     QString synopsis;

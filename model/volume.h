@@ -5,7 +5,7 @@
 
 class Volume : public Element
 {
-private:
+protected:
     quint32 nbPages;
 
 public:

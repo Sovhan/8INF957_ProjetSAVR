@@ -5,7 +5,7 @@
 
 class Episode : public Element
 {
-private:
+protected:
     quint32 season;
     quint32 duration;
 public:

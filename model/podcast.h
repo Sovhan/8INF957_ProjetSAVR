@@ -5,7 +5,7 @@
 
 class Podcast : public Content
 {
-private:
+protected:
     QString author;
 
 public:

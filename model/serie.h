@@ -5,11 +5,12 @@
 
 class Serie : public Content
 {
-private:
+protected:
     QString studio;
 
 public:
-    Serie();
+    Serie(QObject* parent = 0);
+    Serie(quint32 id, QString name, QString synopsis, QObject* parent = 0);
 };
 
 #endif // SERIE_H

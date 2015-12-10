@@ -5,7 +5,7 @@
 
 class Anime : public Content
 {
-private:
+protected:
     QString studio;
 
 public:

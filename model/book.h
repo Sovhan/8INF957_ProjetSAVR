@@ -5,7 +5,7 @@
 
 class Book : public Content
 {
-private:
+protected:
     QString author;
 
 public:

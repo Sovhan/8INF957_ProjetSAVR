@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,11 +24,11 @@ SOURCES += main.cpp\
     model/book.cpp \
     model/serie.cpp \
     model/anime.cpp \
-    model/podcast.cpp
+    model/podcast.cpp \
+    controllers/seriescontroller.cpp \
     pagetvseries.cpp \
     pageonetvserie.cpp \
     pageaccueilcontent.cpp
-
 
 HEADERS  += pageaccueil.h \
     pageanime.h \
@@ -42,7 +42,8 @@ HEADERS  += pageaccueil.h \
     model/book.h \
     model/serie.h \
     model/anime.h \
-    model/podcast.h
+    model/podcast.h \
+    controllers/seriescontroller.h \
     pagetvseries.h \
     pageonetvserie.h \
     pageaccueilcontent.h

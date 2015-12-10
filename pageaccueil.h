@@ -16,10 +16,12 @@ class PageAccueil : public QWidget
         ~PageAccueil();
 
 private slots:
-    void on_Series_released();
+    void on_HomeBtn_pressed();
 
 private:
         Ui::PageAccueil *ui;
+        QWidget* parent;
+
 };
 
 #endif // PAGEACCUEIL_H

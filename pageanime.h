@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::PageAnime *ui;
+    QWidget* parent;
 };
 
 #endif // PAGEANIME_H

@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::PageTVSeries *ui;
+    QWidget* parent;
+
 };
 
 #endif // PAGETVSERIES_H

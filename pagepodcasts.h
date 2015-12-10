@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::PagePodcasts *ui;
+    QWidget* parent;
+
 };
 
 #endif // PAGEPODCASTS_H

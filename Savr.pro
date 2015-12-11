@@ -46,7 +46,8 @@ HEADERS  += pageaccueil.h \
     controllers/seriescontroller.h \
     pagetvseries.h \
     pageonetvserie.h \
-    pageaccueilcontent.h
+    pageaccueilcontent.h \
+    utils/apikey.h
 
 FORMS    += pageaccueil.ui \
     pageanime.ui \

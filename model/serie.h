@@ -5,6 +5,7 @@
 
 class Serie : public Content
 {
+    Q_DISABLE_COPY(Serie)
 protected:
     QString studio;
 

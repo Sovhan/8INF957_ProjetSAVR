@@ -7,6 +7,7 @@
 class Content : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(Content)
 
 protected:
     QString title;

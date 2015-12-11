@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QtNetwork>
 #include <QDomDocument>
+#include <QList>
 #include "../model/serie.h"
 
 class SeriesController : public QObject
@@ -11,9 +12,9 @@ class SeriesController : public QObject
     Q_OBJECT
 
 private:
-    QList<Serie> *curSerieList;
-    void setCurSerieList(QList<Serie>* list);
-    Serie parseSearchResult(QDomNode node);
+    QList<Serie*> *curSerieList;
+    void setCurSerieList(QList<Serie *> *list);
+    Serie* parseSearchResult(QDomNode node);
 
 public:
     explicit SeriesController(QObject *parent = 0);

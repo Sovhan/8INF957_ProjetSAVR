@@ -1,14 +1,17 @@
 #include "seriescontroller.h"
 
-void SeriesController::setCurSerieList(QList<Serie> *list)
+void SeriesController::setCurSerieList(QList<Serie*> *list)
 {
     if(curSerieList != NULL) {
+        for(QList<Serie*>::Iterator it = curSerieList->begin(); it != curSerieList->end(); it++) {
+            delete *it;
+        }
         delete curSerieList;
     }
     curSerieList = list;
 }
 
-Serie SeriesController::parseSearchResult(QDomNode node)
+Serie *SeriesController::parseSearchResult(QDomNode node)
 {
     //Temporary data used to retrieve and construct a Serie object
     quint32 id;
@@ -31,7 +34,7 @@ Serie SeriesController::parseSearchResult(QDomNode node)
         synopsis = tempNode.nodeValue();
     }
 
-    return Serie(id, name, synopsis);
+    return new Serie(id, name, synopsis);
 }
 
 SeriesController::SeriesController(QObject *parent) : QObject(parent) {}
@@ -50,8 +53,8 @@ void SeriesController::startSearchSerie(QString query)
 
 void SeriesController::onSearchComplete(QNetworkReply* qnr)
 {
-    Serie serie;
-    QList<Serie> *list = new QList<Serie>();
+    Serie *serie;
+    QList<Serie*> *list = new QList<Serie*>();
 
     if(qnr->error() == QNetworkReply::NoError) {
         QDomDocument doc;
@@ -59,7 +62,9 @@ void SeriesController::onSearchComplete(QNetworkReply* qnr)
             QDomNodeList nodeList = doc.elementsByTagName(QString("Series"));
             for(int i = 0; i<nodeList.length(); i++) {
                 serie = parseSearchResult(nodeList.at(i));
+                list->append(serie);
             }
+            setCurSerieList(list);
         }
     }
     qnr->deleteLater();

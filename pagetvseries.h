@@ -16,7 +16,8 @@ public:
     ~PageTVSeries();
 
 private slots:
-    void on_pushButton_clicked();
+    void loadSeriePage();
+    void loadNewSeriePage();
 
 private:
     Ui::PageTVSeries *ui;

@@ -15,6 +15,9 @@ public:
     explicit PageTVSeries(QWidget *parent = 0);
     ~PageTVSeries();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::PageTVSeries *ui;
     QWidget* parent;

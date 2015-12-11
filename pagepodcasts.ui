@@ -69,7 +69,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QGridLayout" name="gridLayout_5">
+      <layout class="QGridLayout" name="gridLayoutNews">
        <item row="0" column="0">
         <widget class="QPushButton" name="pushButton">
          <property name="minimumSize">
@@ -157,7 +157,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="gridLayoutOthers">
        <item row="0" column="2">
         <widget class="QPushButton" name="pushButton_7">
          <property name="minimumSize">

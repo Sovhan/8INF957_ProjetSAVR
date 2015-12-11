@@ -15,6 +15,10 @@ public:
     explicit PageTVSeries(QWidget *parent = 0);
     ~PageTVSeries();
 
+private slots:
+    void loadSeriePage();
+    void loadNewSeriePage();
+
 private:
     Ui::PageTVSeries *ui;
     QWidget* parent;

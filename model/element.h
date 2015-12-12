@@ -1,23 +1,15 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include <QObject>
+#include <QString>
 
-class Element : public QObject
+class Element
 {
-    Q_OBJECT
-
 protected:
     QString title;
     quint32 number;
     QString synopsis;
 
-public:
-    explicit Element(QObject *parent = 0);
-
-signals:
-
-public slots:
 };
 
 #endif // ELEMENT_H

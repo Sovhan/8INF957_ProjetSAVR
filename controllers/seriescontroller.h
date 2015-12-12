@@ -12,21 +12,21 @@ class SeriesController : public QObject
     Q_OBJECT
 
 private:
-    QList<Serie*> *curSerieList;
+    QList<Serie> *curSerieList;
     QNetworkAccessManager qnam;
 
-    void setCurSerieList(QList<Serie *> *list);
-    Serie* parseSearchResult(QDomNode node);
+    void setCurSerieList(QList<Serie> &list);
+    Serie parseSearchResult(const QDomNode &node);
 
 public:
     explicit SeriesController(QObject *parent = 0);
     ~SeriesController();
-    void startSearchSerie(QString query);
+    void startSearchSeries(QString query);
 
 signals:
 
 public slots:
-    void onSearchComplete(QNetworkReply* qnr);
+    void dispatchReply(QNetworkReply* qnr);
 };
 
 #endif // SERIESCONTROLLER_H

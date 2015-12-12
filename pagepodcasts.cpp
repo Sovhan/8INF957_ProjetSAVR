@@ -2,7 +2,7 @@
 #include "ui_pagepodcasts.h"
 
 PagePodcasts::PagePodcasts(QWidget *parent) :
-    QWidget(parent),
+    ContentsPage(parent),
     ui(new Ui::PagePodcasts)
 {
     ui->setupUi(this);
@@ -11,4 +11,12 @@ PagePodcasts::PagePodcasts(QWidget *parent) :
 PagePodcasts::~PagePodcasts()
 {
     delete ui;
+}
+
+void PagePodcasts::loadContentPage(){
+
+}
+
+void PagePodcasts::loadNewContentPage(){
+
 }

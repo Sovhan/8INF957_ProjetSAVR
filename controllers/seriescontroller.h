@@ -13,6 +13,8 @@ class SeriesController : public QObject
 
 private:
     QList<Serie*> *curSerieList;
+    QNetworkAccessManager qnam;
+
     void setCurSerieList(QList<Serie *> *list);
     Serie* parseSearchResult(QDomNode node);
 

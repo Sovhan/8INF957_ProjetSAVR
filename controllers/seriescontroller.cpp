@@ -19,7 +19,7 @@ Serie *SeriesController::parseSearchResult(QDomNode node)
     QString synopsis;
     QDomNode tempNode;
 
-    tempNode = node.firstChildElement("id");
+    tempNode = node.firstChildElement("seriesid");
     if (!tempNode.isNull()) {
         id = tempNode.nodeValue().toInt();
     }
@@ -37,7 +37,9 @@ Serie *SeriesController::parseSearchResult(QDomNode node)
     return new Serie(id, name, synopsis);
 }
 
-SeriesController::SeriesController(QObject *parent) : QObject(parent) {}
+SeriesController::SeriesController(QObject *parent) : QObject(parent) {
+    connect(&qnam, SIGNAL(finished(QNetworkReply*), this, SLOT(onSearchComplete(QNetworkReply*));
+}
 
 SeriesController::~SeriesController()
 {
@@ -48,7 +50,7 @@ SeriesController::~SeriesController()
 
 void SeriesController::startSearchSerie(QString query)
 {
-
+    QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/GetSeries.php?seriesname="+query)));
 }
 
 void SeriesController::onSearchComplete(QNetworkReply* qnr)

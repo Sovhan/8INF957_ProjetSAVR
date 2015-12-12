@@ -1,6 +1,6 @@
 #include "pageaccueil.h"
 #include "ui_pageaccueil.h"
-#include "pageanime.h"
+#include "content/anime/pageanime.h"
 #include "pageaccueilcontent.h"
 #include "pagebooks.h"
 #include "pagepodcasts.h"

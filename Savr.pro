@@ -14,7 +14,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         pageaccueil.cpp \
-    pageanime.cpp \
     pagebooks.cpp \
     pagepodcasts.cpp \
     model/content.cpp \
@@ -29,11 +28,11 @@ SOURCES += main.cpp\
     content/tvseries/pagetvseries.cpp \
     content/tvseries/pageonetvserie.cpp \
     content/tvseries/pageoneepisode.cpp \
+    content/anime/pageanime.cpp \
     pageaccueilcontent.cpp \
     pagetvseriesauto.cpp
 
 HEADERS  += pageaccueil.h \
-    pageanime.h \
     colors.h \
     pagebooks.h \
     pagepodcasts.h \
@@ -49,6 +48,7 @@ HEADERS  += pageaccueil.h \
     content/tvseries/pagetvseries.h \
     content/tvseries/pageonetvserie.h \
     content/tvseries/pageoneepisode.h \
+    content/anime/pageanime.h \
     pageaccueilcontent.h \
     utils/apikey.h \
     pagetvseriesauto.h \
@@ -56,11 +56,11 @@ HEADERS  += pageaccueil.h \
     pages/onecontentpage.h
 
 FORMS    += pageaccueil.ui \
-    pageanime.ui \
     pagebooks.ui \
     pagepodcasts.ui \
     content/tvseries/pagetvseries.ui \
     content/tvseries/pageonetvserie.ui \
     content/tvseries/pageoneepisode.ui \
+    content/anime/pageanime.ui \
     pageaccueilcontent.ui \
     pagetvseriesauto.ui

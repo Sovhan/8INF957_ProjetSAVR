@@ -14,9 +14,6 @@ private slots:
     virtual void loadContentPage() = 0;
     virtual void loadNewContentPage() = 0;
 
-private:
-    QWidget* parent;
-
 };
 
 #endif // CONTENTSPAGE

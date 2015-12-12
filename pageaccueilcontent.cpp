@@ -3,7 +3,7 @@
 #include "content/anime/pageanime.h"
 #include "pageaccueilcontent.h"
 #include "content/books/pagebooks.h"
-#include "pagepodcasts.h"
+#include "content/podcasts/pagepodcasts.h"
 #include "content/tvseries/pagetvseries.h"
 #include "pagetvseriesauto.h"
 #include <QStackedWidget>

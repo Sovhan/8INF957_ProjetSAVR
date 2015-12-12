@@ -15,7 +15,10 @@ PageTVSeriesAuto::~PageTVSeriesAuto()
 }
 
 void PageTVSeriesAuto::loadButtons(){
-    QPushButton* b = new QPushButton("haha!!!!!",this);
-    b->autoDefault();
-    ui->newsGrid4by1->addWidget(b);
+    QPushButton* button = new QPushButton("haha!!!!!",this);
+    button->setFixedHeight(140);
+    button->setFixedWidth(140);
+    button->setStyleSheet("background-color: blue;");
+    button->update();
+    ui->gridNews4by1->addWidget(button);
 }

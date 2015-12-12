@@ -68,7 +68,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <layout class="QGridLayout" name="gridLayout"/>
+        <layout class="QGridLayout" name="newsGrid4by1"/>
        </item>
       </layout>
      </widget>
@@ -98,7 +98,7 @@ font: 75 14pt &quot;Calibri&quot;;</string>
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <layout class="QGridLayout" name="gridLayout_2"/>
+        <layout class="QGridLayout" name="fullGrid4byX"/>
        </item>
       </layout>
      </widget>

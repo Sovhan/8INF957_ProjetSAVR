@@ -5,6 +5,8 @@
 #include "pagebooks.h"
 #include "pagepodcasts.h"
 #include "pagetvseries.h"
+#include "pagetvseriesauto.h"
+
 #include<QWidget>
 
 PageAccueil::PageAccueil(QWidget *parent) :
@@ -18,11 +20,15 @@ PageAccueil::PageAccueil(QWidget *parent) :
     QWidget* pageBooks = new PageBooks(stackOfWidgets);
     QWidget* pagePodcasts = new PagePodcasts(stackOfWidgets);
     QWidget* pageTVSeries = new PageTVSeries(stackOfWidgets);
+    QWidget* pageTVSeriesAuto = new PageTVSeriesAuto(stackOfWidgets);
+
     ui->stackedWidget->addWidget(pageAccueilContent);
     ui->stackedWidget->addWidget(pageAnime);
     ui->stackedWidget->addWidget(pageBooks);
     ui->stackedWidget->addWidget(pagePodcasts);
     ui->stackedWidget->addWidget(pageTVSeries);
+    ui->stackedWidget->addWidget(pageTVSeriesAuto);
+
 }
 
 PageAccueil::~PageAccueil()

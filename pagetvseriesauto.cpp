@@ -1,4 +1,5 @@
 #include "pagetvseriesauto.h"
+#include<QPushButton>
 #include "ui_pagetvseriesauto.h"
 
 PageTVSeriesAuto::PageTVSeriesAuto(QWidget *parent) :
@@ -11,4 +12,10 @@ PageTVSeriesAuto::PageTVSeriesAuto(QWidget *parent) :
 PageTVSeriesAuto::~PageTVSeriesAuto()
 {
     delete ui;
+}
+
+void PageTVSeriesAuto::loadButtons(){
+    QPushButton* b = new QPushButton("haha!!!!!",this);
+    b->autoDefault();
+    ui->newsGrid4by1->addWidget(b);
 }

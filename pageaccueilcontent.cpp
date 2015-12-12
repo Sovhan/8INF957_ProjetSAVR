@@ -2,7 +2,7 @@
 #include "ui_pageaccueilcontent.h"
 #include "content/anime/pageanime.h"
 #include "pageaccueilcontent.h"
-#include "pagebooks.h"
+#include "content/books/pagebooks.h"
 #include "pagepodcasts.h"
 #include "content/tvseries/pagetvseries.h"
 #include "pagetvseriesauto.h"

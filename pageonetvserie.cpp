@@ -20,9 +20,19 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
     new QListWidgetItem(tr("Episode S01E09"), listWidget);
     new QListWidgetItem(tr("Episode S01E10"), listWidget);
     new QListWidgetItem(tr("Episode S01E11"), listWidget);
+
+    // Connection to the slot for any episode in the list
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadEpisodePage(QListWidgetItem*)));
 }
 
 PageOneTVSerie::~PageOneTVSerie()
 {
     delete ui;
+}
+
+void PageOneTVSerie::loadEpisodePage(QListWidgetItem* episode)
+{
+    if (episode){
+        //qDebug() << "episode : " << episode->text();
+    }
 }

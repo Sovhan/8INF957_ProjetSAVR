@@ -1,6 +1,9 @@
 #include "pageonetvserie.h"
 #include "ui_pageonetvserie.h"
 
+#include "pageoneepisode.h"
+#include <QStackedWidget>
+
 PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PageOneTVSerie)
@@ -33,6 +36,9 @@ PageOneTVSerie::~PageOneTVSerie()
 void PageOneTVSerie::loadEpisodePage(QListWidgetItem* episode)
 {
     if (episode){
-        //qDebug() << "episode : " << episode->text();
+        QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
+        QWidget* Episode = new PageOneEpisode(parentStack);
+        parentStack->addWidget(Episode);
+        parentStack->setCurrentIndex(parentStack->count()-1);
     }
 }

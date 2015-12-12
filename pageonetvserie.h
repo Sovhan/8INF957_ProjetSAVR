@@ -1,6 +1,7 @@
 #ifndef PAGEONETVSERIE_H
 #define PAGEONETVSERIE_H
 
+#include "pages/onecontentpage.h"
 #include <QWidget>
 #include <QListWidget>
 
@@ -9,7 +10,7 @@ namespace Ui {
 class PageOneTVSerie;
 }
 
-class PageOneTVSerie : public QWidget
+class PageOneTVSerie : public OneContentPage
 {
     Q_OBJECT
 
@@ -18,7 +19,7 @@ public:
     ~PageOneTVSerie();
 
 private slots:
-    void loadEpisodePage(QListWidgetItem *episode);
+    void loadElementPage(QListWidgetItem *episode);
 
 private:
     Ui::PageOneTVSerie *ui;

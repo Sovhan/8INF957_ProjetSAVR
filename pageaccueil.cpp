@@ -4,7 +4,7 @@
 #include "pageaccueilcontent.h"
 #include "pagebooks.h"
 #include "pagepodcasts.h"
-#include "pagetvseries.h"
+#include "content/tvseries/pagetvseries.h"
 #include "pagetvseriesauto.h"
 
 #include<QWidget>
@@ -38,9 +38,9 @@ PageAccueil::~PageAccueil()
 
 void PageAccueil::on_HomeBtn_pressed()
 {
-    if(ui->stackedWidget->count()>5){
+    if(ui->stackedWidget->count()>6){
         int i;
-        for(i=5;i<ui->stackedWidget->count();i++){
+        for(i=6;i<ui->stackedWidget->count();i++){
             ui->stackedWidget->removeWidget(ui->stackedWidget->widget(i));
         }
     }

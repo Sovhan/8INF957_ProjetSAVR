@@ -4,7 +4,7 @@
 #include "pageaccueilcontent.h"
 #include "pagebooks.h"
 #include "pagepodcasts.h"
-#include "pagetvseries.h"
+#include "content/tvseries/pagetvseries.h"
 #include "pagetvseriesauto.h"
 #include <QStackedWidget>
 

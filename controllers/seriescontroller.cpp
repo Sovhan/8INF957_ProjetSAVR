@@ -38,7 +38,7 @@ Serie *SeriesController::parseSearchResult(QDomNode node)
 }
 
 SeriesController::SeriesController(QObject *parent) : QObject(parent) {
-    connect(&qnam, SIGNAL(finished(QNetworkReply*), this, SLOT(onSearchComplete(QNetworkReply*));
+    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(onSearchComplete(QNetworkReply*)));
 }
 
 SeriesController::~SeriesController()

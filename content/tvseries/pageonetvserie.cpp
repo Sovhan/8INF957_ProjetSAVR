@@ -5,7 +5,7 @@
 #include <QStackedWidget>
 
 PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
-    QWidget(parent),
+    OneContentPage(parent),
     ui(new Ui::PageOneTVSerie)
 {
     ui->setupUi(this);
@@ -25,7 +25,7 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
     new QListWidgetItem(tr("Episode S01E11"), listWidget);
 
     // Connection to the slot for any episode in the list
-    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadEpisodePage(QListWidgetItem*)));
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadElementPage(QListWidgetItem*)));
 }
 
 PageOneTVSerie::~PageOneTVSerie()
@@ -33,9 +33,9 @@ PageOneTVSerie::~PageOneTVSerie()
     delete ui;
 }
 
-void PageOneTVSerie::loadEpisodePage(QListWidgetItem* episode)
+void PageOneTVSerie::loadElementPage(QListWidgetItem* element)
 {
-    if (episode){
+    if (element){
         QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
         QWidget* Episode = new PageOneEpisode(parentStack);
         parentStack->addWidget(Episode);

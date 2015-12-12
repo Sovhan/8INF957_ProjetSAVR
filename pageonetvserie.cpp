@@ -9,7 +9,17 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 
     // Creation of the list of episodes
     QListWidget *listWidget = ui->listEpisodesWidget;
-    new QListWidgetItem(tr("Episode 1"), listWidget);
+    new QListWidgetItem(tr("Episode S01E01"), listWidget);
+    new QListWidgetItem(tr("Episode S01E02"), listWidget);
+    new QListWidgetItem(tr("Episode S01E03"), listWidget);
+    new QListWidgetItem(tr("Episode S01E04"), listWidget);
+    new QListWidgetItem(tr("Episode S01E05"), listWidget);
+    new QListWidgetItem(tr("Episode S01E06"), listWidget);
+    new QListWidgetItem(tr("Episode S01E07"), listWidget);
+    new QListWidgetItem(tr("Episode S01E08"), listWidget);
+    new QListWidgetItem(tr("Episode S01E09"), listWidget);
+    new QListWidgetItem(tr("Episode S01E10"), listWidget);
+    new QListWidgetItem(tr("Episode S01E11"), listWidget);
 }
 
 PageOneTVSerie::~PageOneTVSerie()

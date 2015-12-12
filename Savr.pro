@@ -51,7 +51,8 @@ HEADERS  += pageaccueil.h \
     pageaccueilcontent.h \
     utils/apikey.h \
     pageoneepisode.h \
-    pagetvseriesauto.h
+    pagetvseriesauto.h \
+    pages/contentspage.h
 
 FORMS    += pageaccueil.ui \
     pageanime.ui \

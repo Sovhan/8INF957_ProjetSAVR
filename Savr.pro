@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     pagetvseries.cpp \
     pageonetvserie.cpp \
     pageaccueilcontent.cpp \
-    pageoneepisode.cpp
+    pageoneepisode.cpp \
+    pagetvseriesauto.cpp
 
 HEADERS  += pageaccueil.h \
     pageanime.h \
@@ -49,7 +50,8 @@ HEADERS  += pageaccueil.h \
     pageonetvserie.h \
     pageaccueilcontent.h \
     utils/apikey.h \
-    pageoneepisode.h
+    pageoneepisode.h \
+    pagetvseriesauto.h
 
 FORMS    += pageaccueil.ui \
     pageanime.ui \
@@ -58,4 +60,5 @@ FORMS    += pageaccueil.ui \
     pagetvseries.ui \
     pageonetvserie.ui \
     pageaccueilcontent.ui \
-    pageoneepisode.ui
+    pageoneepisode.ui \
+    pagetvseriesauto.ui

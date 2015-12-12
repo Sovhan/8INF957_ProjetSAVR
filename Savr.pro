@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     controllers/seriescontroller.cpp \
     pagetvseries.cpp \
     pageonetvserie.cpp \
-    pageaccueilcontent.cpp
+    pageaccueilcontent.cpp \
+    pageoneepisode.cpp
 
 HEADERS  += pageaccueil.h \
     pageanime.h \
@@ -47,7 +48,8 @@ HEADERS  += pageaccueil.h \
     pagetvseries.h \
     pageonetvserie.h \
     pageaccueilcontent.h \
-    utils/apikey.h
+    utils/apikey.h \
+    pageoneepisode.h
 
 FORMS    += pageaccueil.ui \
     pageanime.ui \
@@ -55,4 +57,5 @@ FORMS    += pageaccueil.ui \
     pagepodcasts.ui \
     pagetvseries.ui \
     pageonetvserie.ui \
-    pageaccueilcontent.ui
+    pageaccueilcontent.ui \
+    pageoneepisode.ui

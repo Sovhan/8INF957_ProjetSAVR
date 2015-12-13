@@ -18,6 +18,8 @@ class PageAccueil : public QWidget
 private slots:
     void on_HomeBtn_pressed();
 
+    void on_pushButton_clicked();
+
 private:
         Ui::PageAccueil *ui;
         QWidget* parent;

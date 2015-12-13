@@ -1,17 +1,34 @@
 #include "seriescontroller.h"
 
-void SeriesController::setCurSerieList(QList<Serie*> *list)
+void SeriesController::setCurSerieList(QHash<quint32, Serie> &list)
 {
     if(curSerieList != NULL) {
-        for(QList<Serie*>::Iterator it = curSerieList->begin(); it != curSerieList->end(); it++) {
-            delete *it;
-        }
         delete curSerieList;
     }
-    curSerieList = list;
+    curSerieList = new QHash<quint32, Serie>(list);
 }
 
-Serie *SeriesController::parseSearchResult(QDomNode node)
+void SeriesController::setCurSerie(const quint32 id) {
+    curSerie = &(*curSerieList)[id];
+}
+
+QHash<quint32, Serie> *SeriesController::getCurSerieList()
+{
+    return curSerieList;
+}
+
+Serie* SeriesController::getCurSerie()
+{
+    return curSerie;
+}
+
+SeriesController *SeriesController::getInstance()
+{
+    static SeriesController instance;
+    return &instance;
+}
+
+Serie SeriesController::parseSearchResult(const QDomNode &node)
 {
     //Temporary data used to retrieve and construct a Serie object
     quint32 id;
@@ -19,7 +36,7 @@ Serie *SeriesController::parseSearchResult(QDomNode node)
     QString synopsis;
     QDomNode tempNode;
 
-    tempNode = node.firstChildElement("id");
+    tempNode = node.firstChildElement("seriesid");
     if (!tempNode.isNull()) {
         id = tempNode.nodeValue().toInt();
     }
@@ -34,37 +51,47 @@ Serie *SeriesController::parseSearchResult(QDomNode node)
         synopsis = tempNode.nodeValue();
     }
 
-    return new Serie(id, name, synopsis);
+    return Serie(id, name, synopsis);
 }
 
-SeriesController::SeriesController(QObject *parent) : QObject(parent) {}
+SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieList(NULL), curSerie(NULL) {
+    connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(dispatchReply(QNetworkReply*)));
+}
 
 SeriesController::~SeriesController()
 {
     if (curSerieList != NULL) {
         delete curSerieList;
     }
+    if (curSerie != NULL) {
+        delete curSerie;
+    }
 }
 
-void SeriesController::startSearchSerie(QString query)
+void SeriesController::startSearchSeries(const QString &query)
 {
-
+    QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/GetSeries.php?seriesname="+query)));
+    qnam.get(qnr);
 }
 
-void SeriesController::onSearchComplete(QNetworkReply* qnr)
+void SeriesController::dispatchReply(QNetworkReply* qnr)
 {
-    Serie *serie;
-    QList<Serie*> *list = new QList<Serie*>();
+    if(qnr->error() == QNetworkReply::NoError) { //If no error on request
 
-    if(qnr->error() == QNetworkReply::NoError) {
-        QDomDocument doc;
-        if(doc.setContent(qnr)) {
-            QDomNodeList nodeList = doc.elementsByTagName(QString("Series"));
-            for(int i = 0; i<nodeList.length(); i++) {
-                serie = parseSearchResult(nodeList.at(i));
-                list->append(serie);
+        if(qnr->request().url().toString().contains("GetSeries")) { //If request was about searching a series by name
+            QDomDocument doc;
+
+            if(doc.setContent(qnr)) { //If successfully parsed
+                QHash<quint32, Serie> list;
+                QDomNodeList nodeList = doc.elementsByTagName(QString("Series"));
+
+                for(int i = 0; i<nodeList.length(); i++) { //We iterate through each series
+                    Serie const &serie = parseSearchResult(nodeList.at(i));
+                    list[serie.getId()] = serie;
+                }
+                setCurSerieList(list);
+                emit searchComplete();
             }
-            setCurSerieList(list);
         }
     }
     qnr->deleteLater();

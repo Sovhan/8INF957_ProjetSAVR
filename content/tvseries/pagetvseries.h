@@ -1,13 +1,14 @@
 #ifndef PAGETVSERIES_H
 #define PAGETVSERIES_H
 
+#include "pages/contentspage.h"
 #include <QWidget>
 
 namespace Ui {
 class PageTVSeries;
 }
 
-class PageTVSeries : public QWidget
+class PageTVSeries : public ContentsPage
 {
     Q_OBJECT
 
@@ -16,8 +17,8 @@ public:
     ~PageTVSeries();
 
 private slots:
-    void loadSeriePage();
-    void loadNewSeriePage();
+    void loadContentPage();
+    void loadNewContentPage();
 
 private:
     Ui::PageTVSeries *ui;

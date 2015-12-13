@@ -5,13 +5,13 @@
 
 class Serie : public Content
 {
-    Q_DISABLE_COPY(Serie)
 protected:
     QString studio;
 
 public:
-    Serie(QObject* parent = 0);
-    Serie(quint32 id, QString name, QString synopsis, QObject* parent = 0);
+    Serie(const quint32 id, const QString name, const QString synopsis);
+    Serie(const Serie &obj);
+    Serie();
 };
 
 #endif // SERIE_H

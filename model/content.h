@@ -1,27 +1,25 @@
 #ifndef CONTENT_H
 #define CONTENT_H
 
-#include <QObject>
 #include "element.h"
+#include <QList>
+#include <QString>
 
-class Content : public QObject
+class Content
 {
-    Q_OBJECT
-    Q_DISABLE_COPY(Content)
-
 protected:
+    quint32 id;
     QString title;
     QList<Element> list;
-    quint32 id;
     QString synopsis;
 
 public:
-    explicit Content(QObject *parent = 0);
-    Content(quint32 id, QString name, QString synopsis, QObject* parent = 0);
+    Content(quint32 id, QString title, QString synopsis);
+    Content(const Content &obj);
+    Content();
+    quint32 getId() const;
 
-signals:
 
-public slots:
 };
 
 #endif // CONTENT_H

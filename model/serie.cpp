@@ -1,7 +1,8 @@
 #include "serie.h"
 
-Serie::Serie(QObject *parent) : Content(parent) {}
-
-Serie::Serie(quint32 id, QString name, QString synopsis, QObject* parent) : Content(id, name, synopsis, parent)
+Serie::Serie(const quint32 id, const QString name, const QString synopsis) : Content(id, name, synopsis)
 {}
 
+Serie::Serie(const Serie &obj) : Content(obj), studio(obj.studio) {}
+
+Serie::Serie() {}

@@ -4,26 +4,26 @@
 #include <QStackedWidget>
 
 PageTVSeries::PageTVSeries(QWidget *parent) :
-    QWidget(parent),
+    ContentsPage(parent),
     ui(new Ui::PageTVSeries)
 {
     ui->setupUi(this);
 
     // Connection for series with new elements
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(loadNewSeriePage()));
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(loadNewSeriePage()));
-    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(loadNewSeriePage()));
-    connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(loadNewSeriePage()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
+    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
+    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
+    connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
 
     // Connection for regular series
-    connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
-    connect(ui->pushButton_12, SIGNAL(clicked()), this, SLOT(loadSeriePage()));
+    connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    connect(ui->pushButton_12, SIGNAL(clicked()), this, SLOT(loadContentPage()));
 }
 
 PageTVSeries::~PageTVSeries()
@@ -33,7 +33,7 @@ PageTVSeries::~PageTVSeries()
 
 // Load the page of a serie with no new element
 // Can be called by any push button connected with it
-void PageTVSeries::loadSeriePage()
+void PageTVSeries::loadContentPage()
 {
     QWidget *buttonWidget = qobject_cast<QWidget*>(sender());
        if(buttonWidget != NULL)
@@ -58,7 +58,7 @@ void PageTVSeries::loadSeriePage()
 
 // Load the page of a serie with new elements
 // Can be called by any push button connected with it
-void PageTVSeries::loadNewSeriePage()
+void PageTVSeries::loadNewContentPage()
 {
     QWidget *buttonWidget = qobject_cast<QWidget*>(sender());
        if(buttonWidget != NULL)

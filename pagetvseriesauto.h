@@ -14,6 +14,8 @@ class PageTVSeriesAuto : public QWidget
 public:
     explicit PageTVSeriesAuto(QWidget *parent = 0);
     ~PageTVSeriesAuto();
+    void loadButtons();
+    void deleteButtons();
 
 private:
     Ui::PageTVSeriesAuto *ui;

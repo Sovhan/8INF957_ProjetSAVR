@@ -4,6 +4,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setApplicationName("SAVR");
+
     PageAccueil w;
     w.show();
 

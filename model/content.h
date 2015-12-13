@@ -18,6 +18,9 @@ public:
     Content(const Content &obj);
     Content();
     quint32 getId() const;
+    QString getTitle() const;
+    QList<Element> getList() const;
+    QString getSynopsis() const;
 
 
 };

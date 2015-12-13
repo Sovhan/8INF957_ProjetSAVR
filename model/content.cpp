@@ -11,3 +11,9 @@ Content::Content()
 {}
 
 quint32 Content::getId() const { return this->id; }
+
+QString Content::getTitle() const { return this->title; }
+
+QList<Element> Content::getList() const { return this->list; }
+
+QString Content::getSynopsis() const { return this->synopsis; }

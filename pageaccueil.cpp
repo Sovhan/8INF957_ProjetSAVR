@@ -8,10 +8,11 @@
 #include "controllers/seriescontroller.h"
 #include "pagetvseriesauto.h"
 #include "searchresults.h"
-#include <iterator>
+#include <QHash>
 #include <QInputDialog>
 #include <QWidget>
 #include <QListWidget>
+#include <QtDebug>
 
 PageAccueil::PageAccueil(QWidget *parent) :
     QWidget(parent),
@@ -63,13 +64,17 @@ void PageAccueil::on_pushButton_clicked()
 }
 
 void PageAccueil::on_searchComplete(){
-    int i;
+    qDebug() << "search complete";
     QWidget* searchResults = new SearchResults();
     QListWidget* resultsList = ((SearchResults*)searchResults)->getResultsList();
     SeriesController* controler = SeriesController::getInstance();
-    for(iterator<Serie> it = controler->getCurSerieList()->begin(); it < controler->getCurSerieList()->end(); it++){
-        new QListWidgetItem(,resultsList);
+    qDebug() << controler->getCurSerieList()->size();
+    for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList()->begin(); it != controler->getCurSerieList()->end(); it++){
+        new QListWidgetItem((*it).getTitle(),resultsList);
+        qDebug() << (*it).getTitle();
     }
 
     ui->stackedWidget->addWidget(searchResults);
+    searchResults->update();
+    ui->stackedWidget->setCurrentWidget(searchResults);
 }

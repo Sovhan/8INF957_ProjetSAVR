@@ -35,20 +35,22 @@ Serie SeriesController::parseSearchResult(const QDomNode &node)
     QString name;
     QString synopsis;
     QDomNode tempNode;
+    bool testbool = false;
 
     tempNode = node.firstChildElement("seriesid");
+    testbool = tempNode.isNull();
     if (!tempNode.isNull()) {
-        id = tempNode.nodeValue().toInt();
+        id = tempNode.firstChild().nodeValue().toInt();
     }
 
     tempNode = node.firstChildElement("SeriesName");
     if (!tempNode.isNull()) {
-        name = tempNode.nodeValue();
+        name = tempNode.firstChild().nodeValue();
     }
 
     tempNode = node.firstChildElement("Overview");
     if (!tempNode.isNull()) {
-        synopsis = tempNode.nodeValue();
+        synopsis = tempNode.firstChild().nodeValue();
     }
 
     return Serie(id, name, synopsis);
@@ -77,10 +79,8 @@ void SeriesController::startSearchSeries(const QString &query)
 void SeriesController::dispatchReply(QNetworkReply* qnr)
 {
     if(qnr->error() == QNetworkReply::NoError) { //If no error on request
-
         if(qnr->request().url().toString().contains("GetSeries")) { //If request was about searching a series by name
             QDomDocument doc;
-
             if(doc.setContent(qnr)) { //If successfully parsed
                 QHash<quint32, Serie> list;
                 QDomNodeList nodeList = doc.elementsByTagName(QString("Series"));
@@ -89,6 +89,7 @@ void SeriesController::dispatchReply(QNetworkReply* qnr)
                     Serie const &serie = parseSearchResult(nodeList.at(i));
                     list[serie.getId()] = serie;
                 }
+
                 setCurSerieList(list);
                 emit searchComplete();
             }

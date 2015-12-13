@@ -1,6 +1,9 @@
 #include "pageoneanime.h"
 #include "ui_pageoneanime.h"
 
+#include "content/anime/pageoneepisodeanime.h"
+#include <QStackedWidget>
+
 PageOneAnime::PageOneAnime(QWidget *parent) :
     OneContentPage(parent),
     ui(new Ui::PageOneAnime)
@@ -9,7 +12,6 @@ PageOneAnime::PageOneAnime(QWidget *parent) :
 
     // Creation of the list of episodes
     QListWidget *listWidget = ui->listEpisodesWidget;
-    /*
     new QListWidgetItem(tr("Episode S01E01"), listWidget);
     new QListWidgetItem(tr("Episode S01E02"), listWidget);
     new QListWidgetItem(tr("Episode S01E03"), listWidget);
@@ -21,7 +23,6 @@ PageOneAnime::PageOneAnime(QWidget *parent) :
     new QListWidgetItem(tr("Episode S01E09"), listWidget);
     new QListWidgetItem(tr("Episode S01E10"), listWidget);
     new QListWidgetItem(tr("Episode S01E11"), listWidget);
-    */
 
     // Connection to the slot for any episode in the list
     connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadElementPage(QListWidgetItem*)));
@@ -35,11 +36,9 @@ PageOneAnime::~PageOneAnime()
 void PageOneAnime::loadElementPage(QListWidgetItem* element)
 {
     if (element){
-        /*
         QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
-        QWidget* Episode = new PageOneEpisode(parentStack);
-        parentStack->addWidget(Episode);
+        QWidget* EpisodeAnime = new PageOneEpisodeAnime(parentStack);
+        parentStack->addWidget(EpisodeAnime);
         parentStack->setCurrentIndex(parentStack->count()-1);
-        */
     }
 }

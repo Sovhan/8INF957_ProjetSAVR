@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     pageaccueilcontent.cpp \
     pagetvseriesauto.cpp \
     content/anime/pageoneanime.cpp \
-    searchresults.cpp
+    searchresults.cpp \
+    content/anime/pageoneepisodeanime.cpp
 
 HEADERS  += pageaccueil.h \
     colors.h \
@@ -57,7 +58,8 @@ HEADERS  += pageaccueil.h \
     pages/contentspage.h \
     pages/onecontentpage.h \
     content/anime/pageoneanime.h \
-    searchresults.h
+    searchresults.h \
+    content/anime/pageoneepisodeanime.h
 
 FORMS    += pageaccueil.ui \
     content/books/pagebooks.ui \
@@ -69,4 +71,5 @@ FORMS    += pageaccueil.ui \
     pageaccueilcontent.ui \
     pagetvseriesauto.ui \
     content/anime/pageoneanime.ui \
-    searchresults.ui
+    searchresults.ui \
+    content/anime/pageoneepisodeanime.ui

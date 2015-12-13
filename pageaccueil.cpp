@@ -47,3 +47,8 @@ void PageAccueil::on_HomeBtn_pressed()
     ((PageTVSeriesAuto*)ui->stackedWidget->widget(5))->deleteButtons();
     ui->stackedWidget->setCurrentIndex(0);
 }
+
+void PageAccueil::on_pushButton_clicked()
+{
+
+}

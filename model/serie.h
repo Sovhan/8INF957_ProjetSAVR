@@ -9,8 +9,9 @@ protected:
     QString studio;
 
 public:
-    Serie(quint32 id, QString name, QString synopsis);
+    Serie(const quint32 id, const QString name, const QString synopsis);
     Serie(const Serie &obj);
+    Serie();
 };
 
 #endif // SERIE_H

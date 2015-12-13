@@ -8,15 +8,16 @@
 class Content
 {
 protected:
+    quint32 id;
     QString title;
     QList<Element> list;
-    quint32 id;
     QString synopsis;
 
 public:
-    Content(quint32 id, QString name, QString synopsis);
+    Content(quint32 id, QString title, QString synopsis);
     Content(const Content &obj);
     Content();
+    quint32 getId() const;
 
 
 };

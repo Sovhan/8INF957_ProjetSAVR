@@ -1,11 +1,31 @@
 #include "seriescontroller.h"
 
-void SeriesController::setCurSerieList(QList<Serie> &list)
+void SeriesController::setCurSerieList(QHash<quint32, Serie> &list)
 {
     if(curSerieList != NULL) {
         delete curSerieList;
     }
-    curSerieList = new QList<Serie>(list);
+    curSerieList = new QHash<quint32, Serie>(list);
+}
+
+void SeriesController::setCurSerie(const quint32 id) {
+    curSerie = &(*curSerieList)[id];
+}
+
+QHash<quint32, Serie> *SeriesController::getCurSerieList()
+{
+    return curSerieList;
+}
+
+Serie* SeriesController::getCurSerie()
+{
+    return curSerie;
+}
+
+SeriesController *SeriesController::getInstance()
+{
+    static SeriesController instance;
+    return &instance;
 }
 
 Serie SeriesController::parseSearchResult(const QDomNode &node)
@@ -34,7 +54,7 @@ Serie SeriesController::parseSearchResult(const QDomNode &node)
     return Serie(id, name, synopsis);
 }
 
-SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieList(NULL) {
+SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieList(NULL), curSerie(NULL) {
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(dispatchReply(QNetworkReply*)));
 }
 
@@ -43,9 +63,12 @@ SeriesController::~SeriesController()
     if (curSerieList != NULL) {
         delete curSerieList;
     }
+    if (curSerie != NULL) {
+        delete curSerie;
+    }
 }
 
-void SeriesController::startSearchSeries(QString query)
+void SeriesController::startSearchSeries(const QString &query)
 {
     QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/GetSeries.php?seriesname="+query)));
     qnam.get(qnr);
@@ -59,13 +82,15 @@ void SeriesController::dispatchReply(QNetworkReply* qnr)
             QDomDocument doc;
 
             if(doc.setContent(qnr)) { //If successfully parsed
-                QList<Serie> list;
+                QHash<quint32, Serie> list;
                 QDomNodeList nodeList = doc.elementsByTagName(QString("Series"));
 
                 for(int i = 0; i<nodeList.length(); i++) { //We iterate through each series
-                    list.append(parseSearchResult(nodeList.at(i)));
+                    Serie const &serie = parseSearchResult(nodeList.at(i));
+                    list[serie.getId()] = serie;
                 }
                 setCurSerieList(list);
+                emit searchComplete();
             }
         }
     }

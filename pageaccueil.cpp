@@ -53,6 +53,6 @@ void PageAccueil::on_pushButton_clicked()
 {
     QInputDialog* dialog = new QInputDialog();
     ((QInputDialog*)dialog)->setInputMode(QInputDialog::TextInput);
-    connect(dialog, SIGNAL(textValueSelected(QString)), SeriesController::getInstance(), SLOT(startSearchSeries(QString));
+    connect(dialog, SIGNAL(textValueSelected(QString)), SeriesController::getInstance(), SLOT(startSearchSeries(QString)));
     dialog->show();
 }

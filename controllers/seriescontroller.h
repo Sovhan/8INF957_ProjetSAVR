@@ -16,21 +16,23 @@ private:
     QNetworkAccessManager qnam;
     Serie *curSerie;
 
+    explicit SeriesController(QObject *parent = 0);
     void setCurSerieList(QHash<quint32, Serie> &list);
     Serie parseSearchResult(const QDomNode &node);
 
 public:
-    explicit SeriesController(QObject *parent = 0);
     ~SeriesController();
-    void startSearchSeries(QString query);    
-    void setCurSerie(quint32 id);
+    void setCurSerie(const quint32 id);
     QHash<quint32, Serie> *getCurSerieList();
     Serie *getCurSerie();
+    static SeriesController *getInstance();
 
 signals:
+    void searchComplete();
 
 public slots:
     void dispatchReply(QNetworkReply* qnr);
+    void startSearchSeries(const QString &query);
 };
 
 #endif // SERIESCONTROLLER_H

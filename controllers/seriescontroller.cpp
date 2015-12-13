@@ -8,7 +8,7 @@ void SeriesController::setCurSerieList(QHash<quint32, Serie> &list)
     curSerieList = new QHash<quint32, Serie>(list);
 }
 
-void SeriesController::setCurSerie(quint32 id) {
+void SeriesController::setCurSerie(const quint32 id) {
     curSerie = &(*curSerieList)[id];
 }
 
@@ -20,6 +20,12 @@ QHash<quint32, Serie> *SeriesController::getCurSerieList()
 Serie* SeriesController::getCurSerie()
 {
     return curSerie;
+}
+
+SeriesController *SeriesController::getInstance()
+{
+    static SeriesController instance;
+    return &instance;
 }
 
 Serie SeriesController::parseSearchResult(const QDomNode &node)
@@ -62,7 +68,7 @@ SeriesController::~SeriesController()
     }
 }
 
-void SeriesController::startSearchSeries(QString query)
+void SeriesController::startSearchSeries(const QString &query)
 {
     QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/GetSeries.php?seriesname="+query)));
     qnam.get(qnr);
@@ -84,6 +90,7 @@ void SeriesController::dispatchReply(QNetworkReply* qnr)
                     list[serie.getId()] = serie;
                 }
                 setCurSerieList(list);
+                emit searchComplete();
             }
         }
     }

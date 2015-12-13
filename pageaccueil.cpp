@@ -6,7 +6,7 @@
 #include "content/podcasts/pagepodcasts.h"
 #include "content/tvseries/pagetvseries.h"
 #include "pagetvseriesauto.h"
-
+#include <QInputDialog>
 #include<QWidget>
 
 PageAccueil::PageAccueil(QWidget *parent) :
@@ -50,5 +50,7 @@ void PageAccueil::on_HomeBtn_pressed()
 
 void PageAccueil::on_pushButton_clicked()
 {
-
+    QWidget* dialog = new QInputDialog();
+    ((QInputDialog*)dialog)->setInputMode(QInputDialog::TextInput);
+    dialog->show();
 }

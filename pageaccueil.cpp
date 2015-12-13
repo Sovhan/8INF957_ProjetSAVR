@@ -5,6 +5,7 @@
 #include "content/books/pagebooks.h"
 #include "content/podcasts/pagepodcasts.h"
 #include "content/tvseries/pagetvseries.h"
+#include "controllers/seriescontroller.h"
 #include "pagetvseriesauto.h"
 #include <QInputDialog>
 #include <QWidget>
@@ -50,7 +51,8 @@ void PageAccueil::on_HomeBtn_pressed()
 
 void PageAccueil::on_pushButton_clicked()
 {
-    QWidget* dialog = new QInputDialog();
+    QInputDialog* dialog = new QInputDialog();
     ((QInputDialog*)dialog)->setInputMode(QInputDialog::TextInput);
+    connect(dialog, SIGNAL(textValueSelected(QString)), SeriesController::getInstance(), SLOT(startSearchSeries(QString));
     dialog->show();
 }

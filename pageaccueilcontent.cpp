@@ -43,8 +43,6 @@ void PageAccueilContent::on_Anime_clicked()
     }
 }
 
-
-
 void PageAccueilContent::on_Podcasts_clicked()
 {
     int i;

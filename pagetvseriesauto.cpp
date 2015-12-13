@@ -1,5 +1,5 @@
 #include "pagetvseriesauto.h"
-#include<QPushButton>
+#include <QPushButton>
 #include "ui_pagetvseriesauto.h"
 
 PageTVSeriesAuto::PageTVSeriesAuto(QWidget *parent) :
@@ -18,7 +18,7 @@ void PageTVSeriesAuto::loadButtons(){
     QPushButton* button = new QPushButton("haha!!!!!",this);
     button->setFixedHeight(140);
     button->setFixedWidth(140);
-    button->setStyleSheet("background-color: blue;");
+    button->setStyleSheet("background-color: #233dbc;");
     button->update();
     ui->gridNews4by1->addWidget(button);
 }

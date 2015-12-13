@@ -7,7 +7,7 @@
 #include "content/tvseries/pagetvseries.h"
 #include "pagetvseriesauto.h"
 #include <QInputDialog>
-#include<QWidget>
+#include <QWidget>
 
 PageAccueil::PageAccueil(QWidget *parent) :
     QWidget(parent),

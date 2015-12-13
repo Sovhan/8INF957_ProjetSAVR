@@ -7,8 +7,11 @@
 #include "content/tvseries/pagetvseries.h"
 #include "controllers/seriescontroller.h"
 #include "pagetvseriesauto.h"
+#include "searchresults.h"
+#include <iterator>
 #include <QInputDialog>
 #include <QWidget>
+#include <QListWidget>
 
 PageAccueil::PageAccueil(QWidget *parent) :
     QWidget(parent),
@@ -30,6 +33,7 @@ PageAccueil::PageAccueil(QWidget *parent) :
     ui->stackedWidget->addWidget(pageTVSeries);
     ui->stackedWidget->addWidget(pageTVSeriesAuto);
 
+    connect(SeriesController::getInstance(),SIGNAL(searchComplete()),this,SLOT(on_searchComplete()));
 }
 
 PageAccueil::~PageAccueil()
@@ -52,7 +56,20 @@ void PageAccueil::on_HomeBtn_pressed()
 void PageAccueil::on_pushButton_clicked()
 {
     QInputDialog* dialog = new QInputDialog();
-    ((QInputDialog*)dialog)->setInputMode(QInputDialog::TextInput);
-    connect(dialog, SIGNAL(textValueSelected(QString)), SeriesController::getInstance(), SLOT(startSearchSeries(QString));
+    dialog->setInputMode(QInputDialog::TextInput);
+    connect(dialog, SIGNAL(textValueSelected(QString)),
+            SeriesController::getInstance(), SLOT(startSearchSeries(QString)));
     dialog->show();
+}
+
+void PageAccueil::on_searchComplete(){
+    int i;
+    QWidget* searchResults = new SearchResults();
+    QListWidget* resultsList = ((SearchResults*)searchResults)->getResultsList();
+    SeriesController* controler = SeriesController::getInstance();
+    for(iterator<Serie> it = controler->getCurSerieList()->begin(); it < controler->getCurSerieList()->end(); it++){
+        new QListWidgetItem(,resultsList);
+    }
+
+    ui->stackedWidget->addWidget(searchResults);
 }

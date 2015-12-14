@@ -15,6 +15,7 @@ private:
     QHash<quint32, Serie> *curSerieList;
     QNetworkAccessManager qnam;
     Serie *curSerie;
+    QHash<quint32, Serie> *savedSerieList;
 
     explicit SeriesController(QObject *parent = 0);
     void setCurSerieList(QHash<quint32, Serie> &list);
@@ -26,6 +27,7 @@ public:
     QHash<quint32, Serie> *getCurSerieList();
     Serie *getCurSerie();
     static SeriesController *getInstance();
+    void saveSerie(quint32 id);
 
 signals:
     void searchComplete();

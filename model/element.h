@@ -9,6 +9,13 @@ protected:
     QString title;
     quint32 number;
     QString synopsis;
+    bool seen;
+
+public:
+    void setSeen();
+    void setUnseen();
+    bool isSeen() const;
+    friend QDataStream &operator<<(QDataStream &qds, const Element &el);
 
 };
 

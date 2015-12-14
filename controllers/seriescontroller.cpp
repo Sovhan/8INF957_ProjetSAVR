@@ -28,17 +28,23 @@ SeriesController *SeriesController::getInstance()
     return &instance;
 }
 
+void SeriesController::saveSerie(quint32 id)
+{
+    if(curSerieList != NULL) {
+        (*curSerieList)[id].setSaved();
+        (*savedSerieList)[id] = (*curSerieList)[id];
+    }
+}
+
 Serie SeriesController::parseSearchResult(const QDomNode &node)
 {
     //Temporary data used to retrieve and construct a Serie object
-    quint32 id;
+    quint32 id = 0;
     QString name;
     QString synopsis;
     QDomNode tempNode;
-    bool testbool = false;
 
     tempNode = node.firstChildElement("seriesid");
-    testbool = tempNode.isNull();
     if (!tempNode.isNull()) {
         id = tempNode.firstChild().nodeValue().toInt();
     }

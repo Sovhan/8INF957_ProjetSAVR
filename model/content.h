@@ -4,6 +4,7 @@
 #include "element.h"
 #include <QList>
 #include <QString>
+#include <QDataStream>
 
 class Content
 {
@@ -12,6 +13,8 @@ protected:
     QString title;
     QList<Element> list;
     QString synopsis;
+    bool toSave;
+    QString posterUrl;
 
 public:
     Content(quint32 id, QString title, QString synopsis);
@@ -21,7 +24,10 @@ public:
     QString getTitle() const;
     QList<Element> getList() const;
     QString getSynopsis() const;
-
+    void setSaved();
+    void setUnsaved();
+    bool isSaved() const;
+    friend QDataStream &operator<<(QDataStream &qds, const Content &ct);
 
 };
 

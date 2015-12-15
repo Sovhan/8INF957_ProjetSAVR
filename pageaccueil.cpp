@@ -70,18 +70,12 @@ void PageAccueil::on_searchComplete(){
     qDebug() << controler->getCurSerieList().size();
     QVariant tmpV;
     for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList().begin(); it != controler->getCurSerieList().end(); it++){
-<<<<<<< HEAD
-        it != controler->getCurSerieList()->end();
-        it++){
         new QListWidgetItem((*it).getTitle(),resultsList);
-=======
         QListWidgetItem *tmpI = new QListWidgetItem();
         tmpI->setText((*it).getTitle());
         tmpV.setValue((*it).getId());
         tmpI->setData(Qt::UserRole, tmpV);
         resultsList->addItem(tmpI);
->>>>>>> 34d156bd971ce33d519796e358d35d4d9c6cd1f9
-        qDebug() << (*it).getTitle();
     }
 
     ui->stackedWidget->addWidget(searchResults);

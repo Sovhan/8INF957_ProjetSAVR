@@ -68,6 +68,8 @@ void PageAccueil::on_searchComplete(){
     QListWidget* resultsList = ((SearchResults*)searchResults)->getResultsList();
     SeriesController* controler = SeriesController::getInstance();
     for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList().begin(); it != controler->getCurSerieList().end(); it++){
+        it != controler->getCurSerieList()->end();
+        it++){
         new QListWidgetItem((*it).getTitle(),resultsList);
         qDebug() << (*it).getTitle();
     }

@@ -69,8 +69,13 @@ void PageAccueil::on_searchComplete(){
     QListWidget* resultsList = ((SearchResults*)searchResults)->getResultsList();
     SeriesController* controler = SeriesController::getInstance();
     qDebug() << controler->getCurSerieList()->size();
+    QVariant tmpV;
+    QListWidgetItem *tmpI = new QListWidgetItem();
     for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList()->begin(); it != controler->getCurSerieList()->end(); it++){
-        new QListWidgetItem((*it).getTitle(),resultsList);
+        tmpI->setText((*it).getTitle());
+        tmpV.setValue((*it).getId());
+        tmpI->setData(Qt::UserRole, tmpV);
+        resultsList->addItem(tmpI);
         qDebug() << (*it).getTitle();
     }
 

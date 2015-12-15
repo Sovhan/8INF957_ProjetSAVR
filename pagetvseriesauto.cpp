@@ -1,6 +1,7 @@
 #include "pagetvseriesauto.h"
 #include <QPushButton>
 #include "ui_pagetvseriesauto.h"
+#include "controllers/seriescontroller.h"
 
 PageTVSeriesAuto::PageTVSeriesAuto(QWidget *parent) :
     QWidget(parent),
@@ -15,12 +16,20 @@ PageTVSeriesAuto::~PageTVSeriesAuto()
 }
 
 void PageTVSeriesAuto::loadButtons(){
-    QPushButton* button = new QPushButton("haha!!!!!",this);
-    button->setFixedHeight(140);
-    button->setFixedWidth(140);
-    button->setStyleSheet("background-color: #233dbc;");
-    button->update();
-    ui->gridNews4by1->addWidget(button);
+
+    SeriesController* controler = SeriesController::getInstance();
+    QPushButton* button;
+    if(!controler->getSavedSerieList().isEmpty()){
+        for(QHash<quint32,Serie>::iterator it = controler->getSavedSerieList().begin();
+            it != controler->getCurSerieList().end(); it++){
+            button = new QPushButton((*it).getTitle(),this);
+            button->setFixedHeight(140);
+            button->setFixedWidth(186);
+            button->setStyleSheet("background-color: #233dbc;");
+            button->update();
+            ui->gridOthers4byX->addWidget(button);
+        }
+    }
 }
 
 void PageTVSeriesAuto::deleteButtons(){

@@ -1,4 +1,5 @@
 #include "seriescontroller.h"
+#include "utils/apikey.h"
 
 void SeriesController::setCurSerieList(QHash<quint32, Serie> &list)
 {
@@ -12,14 +13,14 @@ void SeriesController::setCurSerie(const quint32 id) {
     curSerie = &(*curSerieList)[id];
 }
 
-QHash<quint32, Serie> *SeriesController::getCurSerieList()
+QHash<quint32, Serie> &SeriesController::getCurSerieList()
 {
-    return curSerieList;
+    return *curSerieList;
 }
 
-Serie* SeriesController::getCurSerie()
+Serie &SeriesController::getCurSerie()
 {
-    return curSerie;
+    return *curSerie;
 }
 
 SeriesController *SeriesController::getInstance()
@@ -40,6 +41,12 @@ void SeriesController::unSaveSerie(quint32 id)
 {
     (*savedSerieList)[id].setUnsaved();
     (*savedSerieList).remove(id);
+}
+
+void SeriesController::retrieveCurSerieInfo()
+{
+    QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/").append(TVDB_KEY).append("/series/").append(curSerie->getId()).append("/all")));
+    qnam.get(qnr);
 }
 
 Serie SeriesController::parseSearchResult(const QDomNode &node)

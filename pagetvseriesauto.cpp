@@ -21,7 +21,7 @@ void PageTVSeriesAuto::loadButtons(){
     QPushButton* button;
     if(!controler->getSavedSerieList().isEmpty()){
         for(QHash<quint32,Serie>::iterator it = controler->getSavedSerieList().begin();
-            it != controler->getCurSerieList().end(); it++){
+            it != controler->getSavedSerieList().end(); it++){
             button = new QPushButton((*it).getTitle(),this);
             button->setFixedHeight(140);
             button->setFixedWidth(186);

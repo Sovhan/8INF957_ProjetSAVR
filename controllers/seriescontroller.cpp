@@ -165,9 +165,6 @@ SeriesController::~SeriesController()
     if (curSerieList != NULL) {
         delete curSerieList;
     }
-    if (curSerie != NULL) {
-        delete curSerie;
-    }
 }
 
 void SeriesController::startSearchSeries(const QString &query)

@@ -10,10 +10,10 @@ void SeriesController::setCurSerieList(QHash<quint32, Serie> &list)
 }
 
 void SeriesController::setCurSerie(const quint32 id) {
-    if(curSerieList->contains(id))
-        curSerie = &(*curSerieList)[id];
-    else if (savedSerieList->contains(id))
+    if(savedSerieList->contains(id))
         curSerie = &(*savedSerieList)[id];
+    else if(curSerieList->contains(id))
+        curSerie = &(*curSerieList)[id];
     else
         curSerie = NULL;
 }

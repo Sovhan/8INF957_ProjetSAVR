@@ -30,6 +30,7 @@ public:
     ~SeriesController();
     void setCurSerie(const quint32 id);
     QHash<quint32, Serie> &getCurSerieList();
+    QHash<quint32, Serie> &getSavedSerieList();
     Serie &getCurSerie();
     static SeriesController *getInstance();
     void saveSerie(quint32 id);

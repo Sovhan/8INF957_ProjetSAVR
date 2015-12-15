@@ -18,6 +18,11 @@ QHash<quint32, Serie> &SeriesController::getCurSerieList()
     return *curSerieList;
 }
 
+QHash<quint32, Serie> &SeriesController::getSavedSerieList()
+{
+    return *savedSerieList;
+}
+
 Serie &SeriesController::getCurSerie()
 {
     return *curSerie;

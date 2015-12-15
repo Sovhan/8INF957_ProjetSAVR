@@ -17,6 +17,9 @@ public:
     ~SearchResults();
     QListWidget* getResultsList();
 
+private slots :
+    void loadSeriePage(QListWidgetItem* serie);
+
 private:
     Ui::SearchResults *ui;
 };

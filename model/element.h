@@ -2,6 +2,7 @@
 #define ELEMENT_H
 
 #include <QString>
+#include <QDataStream>
 
 class Element
 {
@@ -16,6 +17,7 @@ public:
     void setUnseen();
     bool isSeen() const;
     friend QDataStream &operator<<(QDataStream &qds, const Element &el);
+    friend QDataStream &operator>>(QDataStream &qds, Element &el);
 
 };
 

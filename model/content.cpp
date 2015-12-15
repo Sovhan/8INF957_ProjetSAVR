@@ -21,6 +21,18 @@ void Content::setUnsaved() { this->toSave = false; }
 
 bool Content::isSaved() const { return this->toSave; }
 
+QDataStream &operator>>(QDataStream &qds, Content &ct)
+{
+    qds >> ct.id;
+    qds >> ct.list;
+    qds >> ct.posterUrl;
+    qds >> ct.synopsis;
+    qds >> ct.title;
+    qds >> ct.toSave;
+
+    return qds;
+}
+
 QDataStream &operator<<(QDataStream &qds, const Content &ct)
 {
     qds << ct.id;

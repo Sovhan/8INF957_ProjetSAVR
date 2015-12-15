@@ -7,6 +7,8 @@
 #include <QHash>
 #include "../model/serie.h"
 
+#define SERIES_DB "/series.db"
+
 class SeriesController : public QObject
 {
     Q_OBJECT
@@ -16,6 +18,7 @@ private:
     QNetworkAccessManager qnam;
     Serie *curSerie;
     QHash<quint32, Serie> *savedSerieList;
+    QString dbPath;
 
     explicit SeriesController(QObject *parent = 0);
     void setCurSerieList(QHash<quint32, Serie> &list);
@@ -28,6 +31,7 @@ public:
     Serie *getCurSerie();
     static SeriesController *getInstance();
     void saveSerie(quint32 id);
+    void unSaveSerie(quint32 id);
 
 signals:
     void searchComplete();

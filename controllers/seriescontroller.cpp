@@ -36,6 +36,12 @@ void SeriesController::saveSerie(quint32 id)
     }
 }
 
+void SeriesController::unSaveSerie(quint32 id)
+{
+    (*savedSerieList)[id].setUnsaved();
+    (*savedSerieList).remove(id);
+}
+
 Serie SeriesController::parseSearchResult(const QDomNode &node)
 {
     //Temporary data used to retrieve and construct a Serie object
@@ -64,10 +70,31 @@ Serie SeriesController::parseSearchResult(const QDomNode &node)
 
 SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieList(NULL), curSerie(NULL) {
     connect(&qnam, SIGNAL(finished(QNetworkReply*)), this, SLOT(dispatchReply(QNetworkReply*)));
+    this->savedSerieList = new QHash<quint32, Serie>();
+
+    //We try to retrieve saved series if any
+    this->dbPath = QString(QStandardPaths::locate(QStandardPaths::DataLocation, SERIES_DB));
+    if(this->dbPath.isEmpty()){
+        this->dbPath = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+        this->dbPath.append(SERIES_DB);
+    } else {
+        QFile db(this->dbPath);
+        if(db.open(QFile::ReadOnly)) {
+            QDataStream qds(&db);
+            qds >> (*savedSerieList);
+            db.close();
+        }
+    }
 }
 
 SeriesController::~SeriesController()
 {
+    QFile db(this->dbPath);
+    if(db.open(QFile::WriteOnly)) {
+        QDataStream qds(&db);
+        qds<<(*savedSerieList);
+        db.close();
+    }
     if (curSerieList != NULL) {
         delete curSerieList;
     }

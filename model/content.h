@@ -28,6 +28,7 @@ public:
     void setUnsaved();
     bool isSaved() const;
     friend QDataStream &operator<<(QDataStream &qds, const Content &ct);
+    friend QDataStream &operator>>(QDataStream &qds, Content &ct);
 
 };
 

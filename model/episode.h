@@ -10,6 +10,8 @@ protected:
     quint32 duration;
 public:
     Episode();
+    friend QDataStream &operator<<(QDataStream &qds, const Episode &ep);
+    friend QDataStream &operator>>(QDataStream &qds, Episode &ep);
 };
 
 #endif // EPISODE_H

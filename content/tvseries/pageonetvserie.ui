@@ -188,7 +188,7 @@ color: white;</string>
            </rect>
           </property>
           <property name="text">
-           <string>...</string>
+           <string>N/A</string>
           </property>
          </widget>
          <widget class="QLabel" name="status">
@@ -201,7 +201,7 @@ color: white;</string>
            </rect>
           </property>
           <property name="text">
-           <string>...</string>
+           <string>N/A</string>
           </property>
          </widget>
          <widget class="QLabel" name="style">
@@ -214,7 +214,7 @@ color: white;</string>
            </rect>
           </property>
           <property name="text">
-           <string>...</string>
+           <string>N/A</string>
           </property>
          </widget>
          <widget class="QLabel" name="numberOfEpisodes">
@@ -227,7 +227,23 @@ color: white;</string>
            </rect>
           </property>
           <property name="text">
-           <string>...</string>
+           <string>N/A</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="trackButton">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>170</y>
+            <width>151</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #071351; border : none;</string>
+          </property>
+          <property name="text">
+           <string>Track</string>
           </property>
          </widget>
         </widget>
@@ -275,7 +291,7 @@ color: white;</string>
            </size>
           </property>
           <property name="text">
-           <string>...</string>
+           <string>N/A</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -284,6 +300,9 @@ color: white;</string>
            <bool>true</bool>
           </property>
          </widget>
+         <zorder>labelSynopsis</zorder>
+         <zorder>synopsis</zorder>
+         <zorder>frameDetails</zorder>
         </widget>
        </item>
       </layout>

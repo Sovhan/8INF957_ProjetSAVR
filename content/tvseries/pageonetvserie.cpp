@@ -15,6 +15,11 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 
     ui->title->setText(controller->getCurSerie().getTitle());
     ui->synopsis->setText(controller->getCurSerie().getSynopsis());
+    if(controller->getCurSerie().isSaved()){
+        ui->trackButton->setText("Untrack");
+    }else{
+        ui->trackButton->setText("Track");
+    }
 
     // Creation of the list of episodes
     QListWidget *listWidget = ui->listEpisodesWidget;
@@ -48,5 +53,17 @@ void PageOneTVSerie::loadElementPage(QListWidgetItem* element)
         QWidget* Episode = new PageOneEpisode(parentStack);
         parentStack->addWidget(Episode);
         parentStack->setCurrentIndex(parentStack->count()-1);
+    }
+}
+
+void PageOneTVSerie::on_trackButton_clicked()
+{
+    SeriesController* controller = SeriesController::getInstance();
+    if(controller->getCurSerie().isSaved()){
+        controller->unSaveSerie(controller->getCurSerie().getId());
+        ui->trackButton->setText("Track");
+    }else{
+        controller->saveSerie(controller->getCurSerie().getId());
+        ui->trackButton->setText("Untrack");
     }
 }

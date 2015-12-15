@@ -21,6 +21,8 @@ public:
 private slots:
     void loadElementPage(QListWidgetItem *episode);
 
+    void on_trackButton_clicked();
+
 private:
     Ui::PageOneTVSerie *ui;
     QWidget* parent;

@@ -27,11 +27,12 @@ private:
 public:
     ~SeriesController();
     void setCurSerie(const quint32 id);
-    QHash<quint32, Serie> *getCurSerieList();
-    Serie *getCurSerie();
+    QHash<quint32, Serie> &getCurSerieList();
+    Serie &getCurSerie();
     static SeriesController *getInstance();
     void saveSerie(quint32 id);
     void unSaveSerie(quint32 id);
+    void retrieveCurSerieInfo();
 
 signals:
     void searchComplete();

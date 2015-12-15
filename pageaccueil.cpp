@@ -64,14 +64,13 @@ void PageAccueil::on_pushButton_clicked()
 }
 
 void PageAccueil::on_searchComplete(){
-    qDebug() << "search complete";
     QWidget* searchResults = new SearchResults();
     QListWidget* resultsList = ((SearchResults*)searchResults)->getResultsList();
     SeriesController* controler = SeriesController::getInstance();
-    qDebug() << controler->getCurSerieList()->size();
+    qDebug() << controler->getCurSerieList().size();
     QVariant tmpV;
-    QListWidgetItem *tmpI = new QListWidgetItem();
-    for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList()->begin(); it != controler->getCurSerieList()->end(); it++){
+    for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList().begin(); it != controler->getCurSerieList().end(); it++){
+        QListWidgetItem *tmpI = new QListWidgetItem();
         tmpI->setText((*it).getTitle());
         tmpV.setValue((*it).getId());
         tmpI->setData(Qt::UserRole, tmpV);

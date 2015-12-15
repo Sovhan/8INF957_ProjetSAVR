@@ -13,8 +13,8 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 
     SeriesController* controller = SeriesController::getInstance();
 
-    QLabel* title = ui->title;
-    title->setText(controller->getCurSerie().getTitle());
+    ui->title->setText(controller->getCurSerie().getTitle());
+    ui->synopsis->setText(controller->getCurSerie().getSynopsis());
 
     // Creation of the list of episodes
     QListWidget *listWidget = ui->listEpisodesWidget;

@@ -77,6 +77,14 @@ void PageAccueil::on_searchComplete(){
         resultsList->addItem(tmpI);
     }
 
+    // Clean of all the other widgets, except the categories
+    if(ui->stackedWidget->count()>6){
+        int i;
+        for(i=6;i<ui->stackedWidget->count();i++){
+            ui->stackedWidget->removeWidget(ui->stackedWidget->widget(i));
+        }
+    }
+
     ui->stackedWidget->addWidget(searchResults);
     searchResults->update();
     ui->stackedWidget->setCurrentWidget(searchResults);

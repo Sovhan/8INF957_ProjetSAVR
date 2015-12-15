@@ -2,6 +2,7 @@
 #include "ui_searchresults.h"
 
 #include "content/tvseries/pageonetvserie.h"
+#include "controllers/seriescontroller.h"
 #include <QStackedWidget>
 
 SearchResults::SearchResults(QWidget *parent) :
@@ -25,6 +26,8 @@ QListWidget* SearchResults::getResultsList(){
 
 void SearchResults::loadSeriePage(QListWidgetItem* serie){
     if(serie){
+        SeriesController* controller = SeriesController::getInstance();
+        controller->setCurSerie(serie->data(Qt::UserRole).value<quint32>());
         QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
         QWidget* TVSerie = new PageOneTVSerie(parentStack);
         parentStack->addWidget(TVSerie);

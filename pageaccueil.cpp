@@ -70,7 +70,6 @@ void PageAccueil::on_searchComplete(){
     qDebug() << controler->getCurSerieList().size();
     QVariant tmpV;
     for(QHash<quint32,Serie>::iterator it = controler->getCurSerieList().begin(); it != controler->getCurSerieList().end(); it++){
-        new QListWidgetItem((*it).getTitle(),resultsList);
         QListWidgetItem *tmpI = new QListWidgetItem();
         tmpI->setText((*it).getTitle());
         tmpV.setValue((*it).getId());

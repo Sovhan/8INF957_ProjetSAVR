@@ -2,6 +2,7 @@
 #include "ui_pageonetvserie.h"
 
 #include "pageoneepisode.h"
+#include "controllers/seriescontroller.h"
 #include <QStackedWidget>
 
 PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
@@ -10,8 +11,14 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    SeriesController* controller = SeriesController::getInstance();
+
+    QLabel* title = ui->title;
+    title->setText(controller->getCurSerie().getTitle());
+
     // Creation of the list of episodes
     QListWidget *listWidget = ui->listEpisodesWidget;
+    /*
     new QListWidgetItem(tr("Episode S01E01"), listWidget);
     new QListWidgetItem(tr("Episode S01E02"), listWidget);
     new QListWidgetItem(tr("Episode S01E03"), listWidget);
@@ -23,6 +30,7 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
     new QListWidgetItem(tr("Episode S01E09"), listWidget);
     new QListWidgetItem(tr("Episode S01E10"), listWidget);
     new QListWidgetItem(tr("Episode S01E11"), listWidget);
+    */
 
     // Connection to the slot for any episode in the list
     connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadElementPage(QListWidgetItem*)));

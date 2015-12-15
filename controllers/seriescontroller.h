@@ -6,6 +6,7 @@
 #include <QDomDocument>
 #include <QHash>
 #include "../model/serie.h"
+#include "../model/episode.h"
 
 #define SERIES_DB "/series.db"
 
@@ -23,6 +24,7 @@ private:
     explicit SeriesController(QObject *parent = 0);
     void setCurSerieList(QHash<quint32, Serie> &list);
     Serie parseSearchResult(const QDomNode &node);
+    void parseSerieResult(const QDomDocument &doc);
 
 public:
     ~SeriesController();

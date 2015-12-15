@@ -55,11 +55,12 @@ Serie SeriesController::parseSearchResult(const QDomNode &node)
     quint32 id = 0;
     QString name;
     QString synopsis;
+    QString network;
     QDomNode tempNode;
 
     tempNode = node.firstChildElement("seriesid");
     if (!tempNode.isNull()) {
-        id = tempNode.firstChild().nodeValue().toInt();
+        id = tempNode.firstChild().nodeValue().toUInt();
     }
 
     tempNode = node.firstChildElement("SeriesName");
@@ -72,7 +73,56 @@ Serie SeriesController::parseSearchResult(const QDomNode &node)
         synopsis = tempNode.firstChild().nodeValue();
     }
 
-    return Serie(id, name, synopsis);
+    tempNode = node.firstChildElement("Network");
+    if (!tempNode.isNull()) {
+        network = tempNode.firstChild().nodeValue();
+    }
+
+    return Serie(id, name, synopsis, network);
+}
+
+void SeriesController::parseSerieResult(const QDomDocument &doc)
+{
+    QDomNode seriesNode = doc.elementsByTagName("Series").at(0);
+
+    //First we ensure that the current series is the one we retrieved episodes for
+    if (seriesNode.firstChildElement("id").nodeValue().toUInt() != curSerie->getId()) {
+        setCurSerie(seriesNode.firstChildElement("id").nodeValue().toUInt());
+    }
+
+    //Then we iterate through each episode declared in the XML file
+    QDomNodeList episodeList = doc.elementsByTagName("Episode");
+    for(int i = 0; i < episodeList.length(); i++) {
+        QDomNode episodeNode = episodeList.at(i);
+        //Temporary data
+        QString title;
+        quint32 number = 0;
+        QString synopsis;
+        quint32 season = 0;
+        QDomNode itNode;
+
+        itNode = episodeNode.firstChildElement("EpisodeName");
+        if (!itNode.isNull()) {
+            title = itNode.firstChild().nodeValue();
+        }
+
+        itNode = episodeNode.firstChildElement("EpisodeNumber");
+        if (!itNode.isNull()) {
+            number = itNode.firstChild().nodeValue().toUInt();
+        }
+
+        itNode = episodeNode.firstChildElement("Overview");
+        if (!itNode.isNull()) {
+            synopsis = itNode.firstChild().nodeValue();
+        }
+
+        itNode = episodeNode.firstChildElement("SeasonNumber");
+        if (!itNode.isNull()) {
+            season = itNode.firstChild().nodeValue().toUInt();
+        }
+
+        curSerie->addElementToList(Episode(title, number, synopsis, season));
+    }
 }
 
 SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieList(NULL), curSerie(NULL) {
@@ -119,7 +169,7 @@ void SeriesController::startSearchSeries(const QString &query)
 void SeriesController::dispatchReply(QNetworkReply* qnr)
 {
     if(qnr->error() == QNetworkReply::NoError) { //If no error on request
-        if(qnr->request().url().toString().contains("GetSeries")) { //If request was about searching a series by name
+        if(qnr->request().url().toString().contains("/GetSeries")) { //If request was about searching a series by name
             QDomDocument doc;
             if(doc.setContent(qnr)) { //If successfully parsed
                 QHash<quint32, Serie> list;
@@ -132,6 +182,12 @@ void SeriesController::dispatchReply(QNetworkReply* qnr)
 
                 setCurSerieList(list);
                 emit searchComplete();
+            }
+        }
+        else if(qnr->request().url().toString().contains("/series")) { //If request was about retrieving informations for a particular series
+            QDomDocument doc;
+            if(doc.setContent(qnr)) { //If successfully parsed
+                parseSerieResult(doc);
             }
         }
     }

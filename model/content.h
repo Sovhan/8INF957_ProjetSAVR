@@ -17,7 +17,7 @@ protected:
     QString posterUrl;
 
 public:
-    Content(quint32 id, QString title, QString synopsis);
+    Content(const quint32 id, const QString title, const QString synopsis);
     Content(const Content &obj);
     Content();
     quint32 getId() const;
@@ -29,6 +29,7 @@ public:
     bool isSaved() const;
     friend QDataStream &operator<<(QDataStream &qds, const Content &ct);
     friend QDataStream &operator>>(QDataStream &qds, Content &ct);
+    void addElementToList(const Element &el);
 
 };
 

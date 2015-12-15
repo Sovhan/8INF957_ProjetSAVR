@@ -6,10 +6,10 @@
 class Serie : public Content
 {
 protected:
-    QString studio;
+    QString network;
 
 public:
-    Serie(const quint32 id, const QString name, const QString synopsis);
+    Serie(const quint32 id, const QString name, const QString synopsis, const QString network);
     Serie(const Serie &obj);
     Serie();
     friend QDataStream &operator>>(QDataStream &qds, Serie &ser);

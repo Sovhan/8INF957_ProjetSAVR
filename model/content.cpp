@@ -1,7 +1,7 @@
 #include "content.h"
 
 
-Content::Content(quint32 id, QString title, QString synopsis) : id(id), title(title), synopsis(synopsis), toSave(false), posterUrl("") {}
+Content::Content(const quint32 id, const QString title, const QString synopsis) : id(id), title(title), synopsis(synopsis), toSave(false), posterUrl("") {}
 
 Content::Content(const Content &obj): id(obj.id), title(obj.title), list(obj.list), synopsis(obj.synopsis), toSave(obj.toSave), posterUrl(obj.posterUrl) {}
 
@@ -20,6 +20,8 @@ void Content::setSaved() { this->toSave = true; }
 void Content::setUnsaved() { this->toSave = false; }
 
 bool Content::isSaved() const { return this->toSave; }
+
+void Content::addElementToList(const Element &el) { list.append(el); }
 
 QDataStream &operator>>(QDataStream &qds, Content &ct)
 {

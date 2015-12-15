@@ -6,6 +6,10 @@ void Element::setUnseen() { this->seen = false; }
 
 bool Element::isSeen() const { return this->seen; }
 
+Element::Element() {}
+
+Element::Element(const QString title, const quint32 number, const QString synopsis) : title(title), number(number), synopsis(synopsis), seen(false) {}
+
 QDataStream &operator>>(QDataStream &qds, Element &el)
 {
     qds >> el.title;

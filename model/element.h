@@ -18,6 +18,8 @@ public:
     bool isSeen() const;
     friend QDataStream &operator<<(QDataStream &qds, const Element &el);
     friend QDataStream &operator>>(QDataStream &qds, Element &el);
+    Element();
+    Element(const QString title, const quint32 number, const QString synopsis);
 
 };
 

@@ -188,6 +188,7 @@ void SeriesController::dispatchReply(QNetworkReply* qnr)
             QDomDocument doc;
             if(doc.setContent(qnr)) { //If successfully parsed
                 parseSerieResult(doc);
+                emit retrieveCurSerieInfoComplete();
             }
         }
     }

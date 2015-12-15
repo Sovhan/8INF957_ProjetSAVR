@@ -38,6 +38,7 @@ public:
 
 signals:
     void searchComplete();
+    void retrieveCurSerieInfoComplete();
 
 public slots:
     void dispatchReply(QNetworkReply* qnr);

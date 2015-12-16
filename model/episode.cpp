@@ -5,7 +5,7 @@ Episode::Episode()
 
 }
 
-Episode::Episode(const QString title, const quint32 number, const QString synopsis, const quint32 season, const quint32 duration) : Element(title, number, synopsis), season(season), duration(duration)
+Episode::Episode(const QString title, const quint32 number, const QString synopsis, const quint32 season) : Element(title, number, synopsis), season(season)
 {
 
 }
@@ -27,7 +27,6 @@ QDataStream &operator<<(QDataStream &qds, const Episode &ep)
 {
     qds << (Element) ep;
     qds << ep.season;
-    qds << ep.duration;
 
     return qds;
 }
@@ -36,7 +35,6 @@ QDataStream &operator>>(QDataStream &qds, Episode &ep)
 {
     qds >> (Element&) ep;
     qds >> ep.season;
-    qds >> ep.duration;
 
     return qds;
 }

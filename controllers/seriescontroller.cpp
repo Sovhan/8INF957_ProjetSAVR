@@ -100,7 +100,13 @@ void SeriesController::parseSerieResult(const QDomDocument &doc)
         setCurSerie(seriesNode.firstChildElement("id").nodeValue().toUInt());
     }
 
-    //Then we iterate through each episode declared in the XML file
+    //Then we update duration of episodes now as it's not given previously
+    quint32 duration = 0;
+
+    duration = seriesNode.firstChildElement("Runtime").nodeValue().toUInt();
+    curSerie->setDuration(duration);
+
+    //Finally we iterate through each episode declared in the XML file
     QDomNodeList episodeList = doc.elementsByTagName("Episode");
     for(int i = 0; i < episodeList.length(); i++) {
         QDomNode episodeNode = episodeList.at(i);

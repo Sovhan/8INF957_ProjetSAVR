@@ -55,7 +55,6 @@ HEADERS  += pageaccueil.h \
     content/anime/pageanime.h \
     pageaccueilcontent.h \
     utils/apikey.h \
-    pagetvseriesauto.h \
     pages/contentspage.h \
     pages/onecontentpage.h \
     content/anime/pageoneanime.h \
@@ -72,7 +71,6 @@ FORMS    += pageaccueil.ui \
     content/tvseries/pageoneepisode.ui \
     content/anime/pageanime.ui \
     pageaccueilcontent.ui \
-    pagetvseriesauto.ui \
     content/anime/pageoneanime.ui \
     searchresults.ui \
     content/anime/pageoneepisodeanime.ui \

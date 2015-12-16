@@ -55,7 +55,8 @@ void SeriesController::unSaveSerie(quint32 id)
 
 void SeriesController::retrieveCurSerieInfo()
 {
-    QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/").append(TVDB_KEY).append("/series/").append(curSerie->getId()).append("/all")));
+    QString test = QString("http://thetvdb.com/api/").append(TVDB_KEY).append("/series/").append(QString::number(curSerie->getId())).append("/all");
+    QNetworkRequest qnr(QUrl(QString("http://thetvdb.com/api/").append(TVDB_KEY).append("/series/").append(QString::number(curSerie->getId())).append("/all")));
     qnam.get(qnr);
 }
 
@@ -94,10 +95,11 @@ Serie SeriesController::parseSearchResult(const QDomNode &node)
 void SeriesController::parseSerieResult(const QDomDocument &doc)
 {
     QDomNode seriesNode = doc.elementsByTagName("Series").at(0);
+    quint32 xmlSeriesId = seriesNode.firstChildElement("id").firstChild().nodeValue().toUInt();
 
     //First we ensure that the current series is the one we retrieved episodes for
-    if (seriesNode.firstChildElement("id").nodeValue().toUInt() != curSerie->getId()) {
-        setCurSerie(seriesNode.firstChildElement("id").nodeValue().toUInt());
+    if ( xmlSeriesId != curSerie->getId()) {
+        setCurSerie(xmlSeriesId);
     }
 
     //Then we update duration of episodes now as it's not given previously

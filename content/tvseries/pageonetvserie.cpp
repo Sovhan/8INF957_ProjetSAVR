@@ -33,7 +33,7 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
             //new QListWidgetItem(episode.getTitle(), listWidget);
             i++;
         }
-        ui->numberOfEpisodes->setText(episodesList.size()+"");
+        ui->numberOfEpisodes->setText(QString::number(episodesList.size()));
     }
     // Connection to the slot for any episode in the list
     connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadElementPage(QListWidgetItem*)));

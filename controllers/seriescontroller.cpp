@@ -140,10 +140,10 @@ SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieL
     this->savedSerieList = new QHash<quint32, Serie>();
 
     //We try to retrieve saved series if any
-    this->dbPath = QString(QStandardPaths::locate(QStandardPaths::DataLocation, SERIES_DB));
+    this->dbPath = QString(QStandardPaths::locate(QStandardPaths::HomeLocation, SERIES_DB));
     if(this->dbPath.isEmpty()){
-        this->dbPath = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
-        this->dbPath.append(SERIES_DB);
+        this->dbPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        this->dbPath.append('/').append(SERIES_DB);
     } else {
         QFile db(this->dbPath);
         if(db.open(QFile::ReadOnly)) {
@@ -156,6 +156,7 @@ SeriesController::SeriesController(QObject *parent) : QObject(parent), curSerieL
 
 SeriesController::~SeriesController()
 {
+
     QFile db(this->dbPath);
     if(db.open(QFile::WriteOnly)) {
         QDataStream qds(&db);

@@ -2,6 +2,7 @@
 #include "ui_pagetvseries.h"
 #include "pageonetvserie.h"
 #include <QStackedWidget>
+#include <QPushButton>
 
 PageTVSeries::PageTVSeries(QWidget *parent) :
     ContentsPage(parent),
@@ -10,12 +11,15 @@ PageTVSeries::PageTVSeries(QWidget *parent) :
     ui->setupUi(this);
 
     // Connection for series with new elements
+    /*
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
     connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
     connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
+    */
 
     // Connection for regular series
+    /*
     connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(loadContentPage()));
     connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(loadContentPage()));
     connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(loadContentPage()));
@@ -24,6 +28,7 @@ PageTVSeries::PageTVSeries(QWidget *parent) :
     connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(loadContentPage()));
     connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(loadContentPage()));
     connect(ui->pushButton_12, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+    */
 }
 
 PageTVSeries::~PageTVSeries()

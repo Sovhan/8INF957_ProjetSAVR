@@ -8,7 +8,7 @@
 #include "../model/serie.h"
 #include "../model/episode.h"
 
-#define SERIES_DB "/series.db"
+#define SERIES_DB "series.db"
 
 class SeriesController : public QObject
 {

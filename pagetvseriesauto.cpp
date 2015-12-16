@@ -17,6 +17,7 @@ PageTVSeriesAuto::~PageTVSeriesAuto()
 
 void PageTVSeriesAuto::loadButtons(){
 
+    int i=0;
     SeriesController* controler = SeriesController::getInstance();
     QPushButton* button;
     if(!controler->getSavedSerieList().isEmpty()){
@@ -27,12 +28,14 @@ void PageTVSeriesAuto::loadButtons(){
             button->setFixedWidth(186);
             button->setStyleSheet("background-color: #233dbc;");
             button->update();
-            ui->gridOthers4byX->addWidget(button);
+            ui->gridOthers4byX->addWidget(button,i/4,i%4,Qt::AlignTop | Qt::AlignLeft);
+            i++;
         }
     }
 }
 
 void PageTVSeriesAuto::deleteButtons(){
+
     int col, row;
     QGridLayout* gridNews = ui->gridNews4by1;
     QGridLayout* gridOthers = ui->gridOthers4byX;
@@ -43,10 +46,12 @@ void PageTVSeriesAuto::deleteButtons(){
             }
         }
 
-
     for(col=0; col<gridOthers->columnCount(); col++)
         for(row=0; row <gridOthers->rowCount();row++){
-            gridOthers->removeItem(gridOthers->itemAtPosition(row,col));
+            if(gridOthers->itemAtPosition(row,col) != NULL){
+                gridOthers->removeItem(gridOthers->itemAtPosition(row,col));
+            }
         }
-
+    this->repaint();
+    this->update();
 }

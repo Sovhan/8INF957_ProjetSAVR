@@ -4,6 +4,7 @@
 #include "pageoneepisode.h"
 #include "controllers/seriescontroller.h"
 #include <QStackedWidget>
+#include <QEventLoop>
 
 PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
     OneContentPage(parent),
@@ -48,6 +49,22 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 PageOneTVSerie::~PageOneTVSerie()
 {
     delete ui;
+}
+
+void PageOneTVSerie::loadElementsInfo(quint32 seriesId)
+{
+    QEventLoop* qel = new QEventLoop();
+    SeriesController* sc = SeriesController::getInstance();
+    sc->setCurSerie(seriesId);
+    qel->connect(sc,SIGNAL(retrieveCurSerieInfoComplete()),SLOT(quit()));
+    sc->retrieveCurSerieInfo();
+    qel->exec();
+    delete qel;
+}
+
+void PageOneTVSerie::setElementsInfo()
+{
+
 }
 
 void PageOneTVSerie::loadElementPage(QListWidgetItem* element)

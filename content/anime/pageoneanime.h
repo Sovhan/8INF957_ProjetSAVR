@@ -16,6 +16,8 @@ class PageOneAnime : public OneContentPage
 public:
     explicit PageOneAnime(QWidget *parent = 0);
     ~PageOneAnime();
+    void setElementsInfo();
+    void loadElementsInfo(quint32 seriesId);
 
 private slots:
     void loadElementPage(QListWidgetItem *episode);

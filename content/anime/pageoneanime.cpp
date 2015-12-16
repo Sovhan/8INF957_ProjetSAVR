@@ -42,3 +42,12 @@ void PageOneAnime::loadElementPage(QListWidgetItem* element)
         parentStack->setCurrentIndex(parentStack->count()-1);
     }
 }
+
+void PageOneAnime::setElementsInfo()
+{
+
+}
+
+void PageOneAnime::loadElementsInfo(quint32 seriesId){
+
+}

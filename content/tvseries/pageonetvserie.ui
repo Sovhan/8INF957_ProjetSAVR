@@ -139,37 +139,11 @@ color: white;</string>
            <string>Title :</string>
           </property>
          </widget>
-         <widget class="QLabel" name="labelStatus">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>40</y>
-            <width>71</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Status :</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="labelStyle">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>80</y>
-            <width>71</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Style :</string>
-          </property>
-         </widget>
          <widget class="QLabel" name="labelNumberOfEpisodes">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>120</y>
+            <y>40</y>
             <width>201</width>
             <height>31</height>
            </rect>
@@ -191,37 +165,11 @@ color: white;</string>
            <string>N/A</string>
           </property>
          </widget>
-         <widget class="QLabel" name="status">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>46</y>
-            <width>191</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>N/A</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="style">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>86</y>
-            <width>191</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>N/A</string>
-          </property>
-         </widget>
          <widget class="QLabel" name="numberOfEpisodes">
           <property name="geometry">
            <rect>
             <x>210</x>
-            <y>126</y>
+            <y>46</y>
             <width>91</width>
             <height>20</height>
            </rect>
@@ -234,7 +182,7 @@ color: white;</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>170</y>
+            <y>90</y>
             <width>151</width>
             <height>31</height>
            </rect>
@@ -300,9 +248,6 @@ color: white;</string>
            <bool>true</bool>
           </property>
          </widget>
-         <zorder>labelSynopsis</zorder>
-         <zorder>synopsis</zorder>
-         <zorder>frameDetails</zorder>
         </widget>
        </item>
       </layout>

@@ -13,32 +13,36 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 
     SeriesController* controller = SeriesController::getInstance();
 
+    // Initialization of all the content of the page
     ui->title->setText(controller->getCurSerie().getTitle());
     ui->synopsis->setText(controller->getCurSerie().getSynopsis());
+
+    // Creation of the list of episodes
+    QListWidget *listWidget = ui->listEpisodesWidget;
+    QList<Element> episodesList = controller->getCurSerie().getList();
+    if(!episodesList.isEmpty()){
+        QVariant tmpV;
+        int i = 0;
+        foreach(Element episode, episodesList){
+            QListWidgetItem *tmpI = new QListWidgetItem();
+            tmpI->setText(episode.getTitle());
+            tmpV.setValue(i);
+            tmpI->setData(Qt::UserRole, tmpV);
+            listWidget->addItem(tmpI);
+            //new QListWidgetItem(episode.getTitle(), listWidget);
+            i++;
+        }
+        ui->numberOfEpisodes->setText(episodesList.size()+"");
+    }
+    // Connection to the slot for any episode in the list
+    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadElementPage(QListWidgetItem*)));
+
+    // Set the status of the Track button
     if(controller->getCurSerie().isSaved()){
         ui->trackButton->setText("Untrack");
     }else{
         ui->trackButton->setText("Track");
     }
-
-    // Creation of the list of episodes
-    QListWidget *listWidget = ui->listEpisodesWidget;
-    /*
-    new QListWidgetItem(tr("Episode S01E01"), listWidget);
-    new QListWidgetItem(tr("Episode S01E02"), listWidget);
-    new QListWidgetItem(tr("Episode S01E03"), listWidget);
-    new QListWidgetItem(tr("Episode S01E04"), listWidget);
-    new QListWidgetItem(tr("Episode S01E05"), listWidget);
-    new QListWidgetItem(tr("Episode S01E06"), listWidget);
-    new QListWidgetItem(tr("Episode S01E07"), listWidget);
-    new QListWidgetItem(tr("Episode S01E08"), listWidget);
-    new QListWidgetItem(tr("Episode S01E09"), listWidget);
-    new QListWidgetItem(tr("Episode S01E10"), listWidget);
-    new QListWidgetItem(tr("Episode S01E11"), listWidget);
-    */
-
-    // Connection to the slot for any episode in the list
-    connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(loadElementPage(QListWidgetItem*)));
 }
 
 PageOneTVSerie::~PageOneTVSerie()

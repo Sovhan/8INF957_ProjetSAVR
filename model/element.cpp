@@ -29,3 +29,7 @@ QDataStream &operator<<(QDataStream &qds, const Element &el)
 
     return qds;
 }
+
+QString Element::getTitle() const { return this->title; }
+quint32 Element::getNumber() const { return this->number; }
+QString Element::getSynopsis() const { return this->synopsis; }

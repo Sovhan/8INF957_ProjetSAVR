@@ -10,6 +10,8 @@ Episode::Episode(const QString title, const quint32 number, const QString synops
 
 }
 
+quint32 Episode::getSeason() const { return this->season; }
+
 bool episodeBefore(const Episode &ep1, const Episode &ep2)
 {
     if(ep1.season < ep2.season) {

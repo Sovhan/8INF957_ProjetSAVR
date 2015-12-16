@@ -13,6 +13,7 @@ public:
     friend QDataStream &operator<<(QDataStream &qds, const Episode &ep);
     friend QDataStream &operator>>(QDataStream &qds, Episode &ep);
     friend bool episodeBefore(const Episode &ep1, const Episode &ep2);
+    quint32 getSeason() const;
 };
 
 #endif // EPISODE_H

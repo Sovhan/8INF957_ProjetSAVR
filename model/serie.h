@@ -16,6 +16,7 @@ public:
     friend QDataStream &operator>>(QDataStream &qds, Serie &ser);
     friend QDataStream &operator<<(QDataStream &qds, const Serie &ser);
     void setDuration(const quint32 duration);
+    quint32 getDuration() const;
 };
 
 #endif // SERIE_H

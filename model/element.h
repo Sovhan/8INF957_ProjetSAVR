@@ -16,6 +16,9 @@ public:
     void setSeen();
     void setUnseen();
     bool isSeen() const;
+    QString getTitle() const;
+    quint32 getNumber() const;
+    QString getSynopsis() const;
     friend QDataStream &operator<<(QDataStream &qds, const Element &el);
     friend QDataStream &operator>>(QDataStream &qds, Element &el);
     Element();

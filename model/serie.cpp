@@ -9,6 +9,8 @@ Serie::Serie() {}
 
 void Serie::setDuration(const quint32 duration) { this->duration = duration; }
 
+quint32 Serie::getDuration() const { return this->duration; }
+
 QDataStream &operator>>(QDataStream &qds, Serie &ser)
 {
     qds >> (Content&) ser;

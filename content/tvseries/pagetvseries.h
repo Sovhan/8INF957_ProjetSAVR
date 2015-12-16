@@ -15,6 +15,8 @@ class PageTVSeries : public ContentsPage
 public:
     explicit PageTVSeries(QWidget *parent = 0);
     ~PageTVSeries();
+    void loadButtons();
+    void deleteButtons();
 
 private slots:
     void loadContentPage();

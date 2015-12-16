@@ -32,6 +32,7 @@ void PageTVSeriesAuto::loadButtons(){
             i++;
         }
     }
+    qDebug() << "(Page TV Series Auto : Load Buttons) Size of saved series list : " <<controler->getSavedSerieList().count();
 }
 
 void PageTVSeriesAuto::deleteButtons(){
@@ -42,14 +43,18 @@ void PageTVSeriesAuto::deleteButtons(){
     for(col=0; col<gridNews->columnCount(); col++)
         for(row=0; row <gridNews->rowCount();row++){
             if(gridNews->itemAtPosition(row,col) != NULL){
-                gridNews->removeItem(gridNews->itemAtPosition(row,col));
+                QLayoutItem* tmp = gridNews->itemAtPosition(row,col);
+                gridNews->removeItem(tmp);
+                delete tmp;
             }
         }
 
     for(col=0; col<gridOthers->columnCount(); col++)
         for(row=0; row <gridOthers->rowCount();row++){
             if(gridOthers->itemAtPosition(row,col) != NULL){
-                gridOthers->removeItem(gridOthers->itemAtPosition(row,col));
+                QLayoutItem* tmp = gridOthers->itemAtPosition(row,col);
+                gridOthers->removeItem(tmp);
+                delete tmp;
             }
         }
     this->repaint();

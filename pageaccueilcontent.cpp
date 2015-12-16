@@ -5,7 +5,6 @@
 #include "content/books/pagebooks.h"
 #include "content/podcasts/pagepodcasts.h"
 #include "content/tvseries/pagetvseries.h"
-#include "pagetvseriesauto.h"
 #include <QStackedWidget>
 
 PageAccueilContent::PageAccueilContent(QWidget *parent) :
@@ -25,8 +24,8 @@ void PageAccueilContent::on_Series_clicked()
     int i;
     QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
     for(i=0;i<parentStack->count();i++){
-        if (dynamic_cast<PageTVSeriesAuto*>(parentStack->widget(i))) {
-            ((PageTVSeriesAuto*)(parentStack->widget(i)))->loadButtons();
+        if (dynamic_cast<PageTVSeries*>(parentStack->widget(i))) {
+            ((PageTVSeries*)(parentStack->widget(i)))->loadButtons();
             parentStack->setCurrentIndex(i);
         }
     }

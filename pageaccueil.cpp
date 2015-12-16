@@ -25,14 +25,14 @@ PageAccueil::PageAccueil(QWidget *parent) :
     QWidget* pageBooks = new PageBooks(stackOfWidgets);
     QWidget* pagePodcasts = new PagePodcasts(stackOfWidgets);
     QWidget* pageTVSeries = new PageTVSeries(stackOfWidgets);
-    QWidget* pageTVSeriesAuto = new PageTVSeriesAuto(stackOfWidgets);
+    //QWidget* pageTVSeriesAuto = new PageTVSeriesAuto(stackOfWidgets);
 
     ui->stackedWidget->addWidget(pageAccueilContent);
     ui->stackedWidget->addWidget(pageAnime);
     ui->stackedWidget->addWidget(pageBooks);
     ui->stackedWidget->addWidget(pagePodcasts);
     ui->stackedWidget->addWidget(pageTVSeries);
-    ui->stackedWidget->addWidget(pageTVSeriesAuto);
+    //ui->stackedWidget->addWidget(pageTVSeriesAuto);
 
     connect(SeriesController::getInstance(),SIGNAL(searchComplete()),this,SLOT(on_searchComplete()));
 }
@@ -44,13 +44,13 @@ PageAccueil::~PageAccueil()
 
 void PageAccueil::on_HomeBtn_pressed()
 {
-    if(ui->stackedWidget->count()>6){
+    if(ui->stackedWidget->count()>5){
         int i;
-        for(i=6;i<ui->stackedWidget->count();i++){
+        for(i=5;i<ui->stackedWidget->count();i++){
             ui->stackedWidget->removeWidget(ui->stackedWidget->widget(i));
         }
     }
-    ((PageTVSeriesAuto*)ui->stackedWidget->widget(5))->deleteButtons();
+    ((PageTVSeries*)ui->stackedWidget->widget(4))->deleteButtons();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -78,9 +78,9 @@ void PageAccueil::on_searchComplete(){
     }
 
     // Clean of all the other widgets, except the categories
-    if(ui->stackedWidget->count()>6){
+    if(ui->stackedWidget->count()>5){
         int i;
-        for(i=6;i<ui->stackedWidget->count();i++){
+        for(i=5;i<ui->stackedWidget->count();i++){
             ui->stackedWidget->removeWidget(ui->stackedWidget->widget(i));
         }
     }

@@ -1,6 +1,7 @@
 #include "pagetvseries.h"
 #include "ui_pagetvseries.h"
 #include "pageonetvserie.h"
+#include "controllers/seriescontroller.h"
 #include <QStackedWidget>
 #include <QPushButton>
 
@@ -54,9 +55,13 @@ void PageTVSeries::loadContentPage()
             if (clickedButton)
             {
                 QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
+                qDebug() << "parent stack : " << parentStack;
                 QWidget* TVSerie = new PageOneTVSerie(parentStack);
+                qDebug() << "serie page created";
                 parentStack->addWidget(TVSerie);
+                qDebug() << "serie page added to stack widget";
                 parentStack->setCurrentIndex(parentStack->count()-1);
+                qDebug() << "page index set";
             }
        }
 }
@@ -84,4 +89,53 @@ void PageTVSeries::loadNewContentPage()
                 parentStack->setCurrentIndex(parentStack->count()-1);
             }
        }
+}
+
+void PageTVSeries::loadButtons(){
+
+    int i=0;
+    SeriesController* controler = SeriesController::getInstance();
+    QPushButton* button;
+    if(!controler->getSavedSerieList().isEmpty()){
+        for(QHash<quint32,Serie>::iterator it = controler->getSavedSerieList().begin();
+            it != controler->getSavedSerieList().end(); it++){
+            button = new QPushButton((*it).getTitle(),this);
+            button->setFixedHeight(140);
+            button->setFixedWidth(186);
+            button->setStyleSheet("background-color: #233dbc;");
+            button->update();
+            ui->gridLayoutOthers->addWidget(button,i/4,i%4,Qt::AlignTop | Qt::AlignLeft);
+            connect(button, SIGNAL(clicked()), this, SLOT(loadContentPage()));
+            i++;
+        }
+    }
+    qDebug() << "(Page TV Series Auto : Load Buttons) Size of saved series list : " <<controler->getSavedSerieList().count();
+}
+
+void PageTVSeries::deleteButtons(){
+
+    int col, row;
+    QGridLayout* gridNews = ui->gridLayoutNews;
+    QGridLayout* gridOthers = ui->gridLayoutOthers;
+    for(col=0; col<gridNews->columnCount(); col++)
+        for(row=0; row <gridNews->rowCount();row++){
+            if(gridNews->itemAtPosition(row,col) != NULL){
+                QLayoutItem* tmp = gridNews->itemAtPosition(row,col);
+                delete tmp->widget();
+                gridNews->removeItem(tmp);
+                delete tmp;
+            }
+        }
+
+    for(col=0; col<gridOthers->columnCount(); col++)
+        for(row=0; row <gridOthers->rowCount();row++){
+            if(gridOthers->itemAtPosition(row,col) != NULL){
+                QLayoutItem* tmp = gridOthers->itemAtPosition(row,col);
+                delete tmp->widget();
+                gridOthers->removeItem(tmp);
+                delete tmp;
+            }
+        }
+    this->repaint();
+    this->update();
 }

@@ -4,6 +4,7 @@
 #include "pages/onecontentpage.h"
 #include <QWidget>
 #include <QListWidget>
+#include <QEventLoop>
 
 
 namespace Ui {
@@ -17,8 +18,12 @@ class PageOneTVSerie : public OneContentPage
 public:
     explicit PageOneTVSerie(QWidget *parent = 0);
     ~PageOneTVSerie();
+    void loadElementsInfo(quint32 seriesId);
+    void setElementsInfo();
 
 private slots:
+
+
     void loadElementPage(QListWidgetItem *episode);
 
     void on_trackButton_clicked();

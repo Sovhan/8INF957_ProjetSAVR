@@ -30,7 +30,6 @@ SOURCES += main.cpp\
     content/tvseries/pageoneepisode.cpp \
     content/anime/pageanime.cpp \
     pageaccueilcontent.cpp \
-    pagetvseriesauto.cpp \
     content/anime/pageoneanime.cpp \
     searchresults.cpp \
     content/anime/pageoneepisodeanime.cpp \

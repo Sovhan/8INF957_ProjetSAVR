@@ -35,15 +35,21 @@ void PageTVSeries::loadContentPage()
             SerieButton *clickedButton = (SerieButton*) item->widget();
             if (clickedButton)
             {
-                SeriesController::getInstance()->setCurSerie(clickedButton->getSeriesId());
+                quint32 clickedSeriesId = clickedButton->getSeriesId();
+                SeriesController::getInstance()->setCurSerie(clickedSeriesId);
                 QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
                 qDebug() << "parent stack : " << parentStack;
                 QWidget* TVSerie = new PageOneTVSerie(parentStack);
                 qDebug() << "serie page created";
+                ((PageOneTVSerie*)TVSerie)->loadElementsInfo(clickedSeriesId);
+                qDebug() << "serie page information loaded";
+                ((PageOneTVSerie*)TVSerie)->setElementsInfo();
+                qDebug() << "serie page populated";
                 parentStack->addWidget(TVSerie);
                 qDebug() << "serie page added to stack widget";
                 parentStack->setCurrentIndex(parentStack->count()-1);
                 qDebug() << "page index set";
+
             }
        }
 }

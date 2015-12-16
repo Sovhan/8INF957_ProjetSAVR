@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     content/anime/pageoneanime.cpp \
     searchresults.cpp \
     content/anime/pageoneepisodeanime.cpp \
-    content/books/pageonebook.cpp
+    content/books/pageonebook.cpp \
+    view/seriebutton.cpp
 
 HEADERS  += pageaccueil.h \
     colors.h \
@@ -61,7 +62,8 @@ HEADERS  += pageaccueil.h \
     content/anime/pageoneanime.h \
     searchresults.h \
     content/anime/pageoneepisodeanime.h \
-    content/books/pageonebook.h
+    content/books/pageonebook.h \
+    view/seriebutton.h
 
 FORMS    += pageaccueil.ui \
     content/books/pagebooks.ui \

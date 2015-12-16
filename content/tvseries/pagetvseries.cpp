@@ -4,32 +4,13 @@
 #include "controllers/seriescontroller.h"
 #include <QStackedWidget>
 #include <QPushButton>
+#include "view/seriebutton.h"
 
 PageTVSeries::PageTVSeries(QWidget *parent) :
     ContentsPage(parent),
     ui(new Ui::PageTVSeries)
 {
     ui->setupUi(this);
-
-    // Connection for series with new elements
-    /*
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
-    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
-    connect(ui->pushButton_4, SIGNAL(clicked()), this, SLOT(loadNewContentPage()));
-    */
-
-    // Connection for regular series
-    /*
-    connect(ui->pushButton_5, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_6, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    connect(ui->pushButton_12, SIGNAL(clicked()), this, SLOT(loadContentPage()));
-    */
 }
 
 PageTVSeries::~PageTVSeries()
@@ -51,9 +32,10 @@ void PageTVSeries::loadContentPage()
                                            &rowOfButton, &columnOfButton, &rowSpanOfButton, &columnSpanOfButton);
 
             QLayoutItem *item = ui->gridLayoutOthers->itemAtPosition(rowOfButton, columnOfButton);
-            QPushButton *clickedButton = qobject_cast<QPushButton*>(item->widget());
+            SerieButton *clickedButton = (SerieButton*) item->widget();
             if (clickedButton)
             {
+                SeriesController::getInstance()->setCurSerie(clickedButton->getSeriesId());
                 QStackedWidget* parentStack = (QStackedWidget*)parentWidget();
                 qDebug() << "parent stack : " << parentStack;
                 QWidget* TVSerie = new PageOneTVSerie(parentStack);
@@ -99,7 +81,7 @@ void PageTVSeries::loadButtons(){
     if(!controler->getSavedSerieList().isEmpty()){
         for(QHash<quint32,Serie>::iterator it = controler->getSavedSerieList().begin();
             it != controler->getSavedSerieList().end(); it++){
-            button = new QPushButton((*it).getTitle(),this);
+            button = new SerieButton((*it).getTitle(), (*it).getId(), this);
             button->setFixedHeight(140);
             button->setFixedWidth(186);
             button->setStyleSheet("background-color: #233dbc;");
@@ -123,7 +105,6 @@ void PageTVSeries::deleteButtons(){
                 QLayoutItem* tmp = gridNews->itemAtPosition(row,col);
                 delete tmp->widget();
                 gridNews->removeItem(tmp);
-                delete tmp;
             }
         }
 
@@ -133,7 +114,6 @@ void PageTVSeries::deleteButtons(){
                 QLayoutItem* tmp = gridOthers->itemAtPosition(row,col);
                 delete tmp->widget();
                 gridOthers->removeItem(tmp);
-                delete tmp;
             }
         }
     this->repaint();

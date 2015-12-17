@@ -102,6 +102,12 @@ void SeriesController::parseSerieResult(const QDomDocument &doc)
         setCurSerie(xmlSeriesId);
     }
 
+    //Just a hack preventing the application to write the same episodes twice or more in a Series
+    //TODO : Improve this a lot !!!
+    if ( !curSerie->getList().isEmpty()) {
+        return;
+    }
+
     //Then we update duration of episodes now as it's not given previously
     quint32 duration = 0;
 
@@ -139,7 +145,7 @@ void SeriesController::parseSerieResult(const QDomDocument &doc)
             season = itNode.firstChild().nodeValue().toUInt();
         }
 
-        curSerie->addElementToList(Episode(title, number, synopsis, season));
+        curSerie->addElementToList(new Episode(title, number, synopsis, season));
     }
 }
 

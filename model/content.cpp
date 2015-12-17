@@ -11,7 +11,7 @@ quint32 Content::getId() const { return this->id; }
 
 QString Content::getTitle() const { return this->title; }
 
-QList<Element> Content::getList() const { return this->list; }
+QList<Element*> Content::getList() const { return this->list; }
 
 QString Content::getSynopsis() const { return this->synopsis; }
 
@@ -21,12 +21,11 @@ void Content::setUnsaved() { this->toSave = false; }
 
 bool Content::isSaved() const { return this->toSave; }
 
-void Content::addElementToList(const Element &el) { list.append(el); }
+void Content::addElementToList(Element *el) { list.append(el); }
 
 QDataStream &operator>>(QDataStream &qds, Content &ct)
 {
     qds >> ct.id;
-    qds >> ct.list;
     qds >> ct.posterUrl;
     qds >> ct.synopsis;
     qds >> ct.title;
@@ -38,7 +37,6 @@ QDataStream &operator>>(QDataStream &qds, Content &ct)
 QDataStream &operator<<(QDataStream &qds, const Content &ct)
 {
     qds << ct.id;
-    qds << ct.list;
     qds << ct.posterUrl;
     qds << ct.synopsis;
     qds << ct.title;

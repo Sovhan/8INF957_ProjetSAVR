@@ -6,7 +6,6 @@
 #include "content/podcasts/pagepodcasts.h"
 #include "content/tvseries/pagetvseries.h"
 #include "controllers/seriescontroller.h"
-#include "pagetvseriesauto.h"
 #include "searchresults.h"
 #include <QHash>
 #include <QInputDialog>

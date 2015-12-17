@@ -20,13 +20,17 @@ PageOneTVSerie::PageOneTVSerie(QWidget *parent) :
 
     // Creation of the list of episodes
     QListWidget *listWidget = ui->listEpisodesWidget;
-    QList<Element> episodesList = controller->getCurSerie().getList();
+    QList<Element*> episodesList = controller->getCurSerie().getList();
     if(!episodesList.isEmpty()){
         QVariant tmpV;
         int i = 0;
-        foreach(Element episode, episodesList){
+        foreach(Element *el, episodesList){
             QListWidgetItem *tmpI = new QListWidgetItem();
-            tmpI->setText(episode.getTitle());
+            QString label;
+            Episode *episode = (Episode*) el;
+            label.sprintf("[S%02uE%02u] ", episode->getSeason(), episode->getNumber());
+            label.append(episode->getTitle());
+            tmpI->setText(label);
             tmpV.setValue(i);
             tmpI->setData(Qt::UserRole, tmpV);
             listWidget->addItem(tmpI);

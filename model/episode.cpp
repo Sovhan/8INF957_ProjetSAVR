@@ -27,7 +27,7 @@ bool episodeBefore(const Episode &ep1, const Episode &ep2)
 
 QDataStream &operator<<(QDataStream &qds, const Episode &ep)
 {
-    qds << (Element) ep;
+    qds << (Element&) ep;
     qds << ep.season;
 
     return qds;

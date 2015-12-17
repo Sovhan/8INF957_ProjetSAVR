@@ -13,7 +13,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        pageaccueil.cpp \
+        view/pageaccueil.cpp \
     content/books/pagebooks.cpp \
     content/podcasts/pagepodcasts.cpp \
     model/content.cpp \
@@ -29,14 +29,14 @@ SOURCES += main.cpp\
     content/tvseries/pageonetvserie.cpp \
     content/tvseries/pageoneepisode.cpp \
     content/anime/pageanime.cpp \
-    pageaccueilcontent.cpp \
+    view/pageaccueilcontent.cpp \
     content/anime/pageoneanime.cpp \
-    searchresults.cpp \
+    view/searchresults.cpp \
     content/anime/pageoneepisodeanime.cpp \
     content/books/pageonebook.cpp \
     view/seriebutton.cpp
 
-HEADERS  += pageaccueil.h \
+HEADERS  += view/pageaccueil.h \
     colors.h \
     content/books/pagebooks.h \
     content/podcasts/pagepodcasts.h \
@@ -53,25 +53,25 @@ HEADERS  += pageaccueil.h \
     content/tvseries/pageonetvserie.h \
     content/tvseries/pageoneepisode.h \
     content/anime/pageanime.h \
-    pageaccueilcontent.h \
+    view/pageaccueilcontent.h \
     utils/apikey.h \
     pages/contentspage.h \
     pages/onecontentpage.h \
     content/anime/pageoneanime.h \
-    searchresults.h \
+    view/searchresults.h \
     content/anime/pageoneepisodeanime.h \
     content/books/pageonebook.h \
     view/seriebutton.h
 
-FORMS    += pageaccueil.ui \
+FORMS    += view/pageaccueil.ui \
     content/books/pagebooks.ui \
     content/podcasts/pagepodcasts.ui \
     content/tvseries/pagetvseries.ui \
     content/tvseries/pageonetvserie.ui \
     content/tvseries/pageoneepisode.ui \
     content/anime/pageanime.ui \
-    pageaccueilcontent.ui \
+    view/pageaccueilcontent.ui \
     content/anime/pageoneanime.ui \
-    searchresults.ui \
+    view/searchresults.ui \
     content/anime/pageoneepisodeanime.ui \
     content/books/pageonebook.ui

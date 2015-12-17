@@ -9,10 +9,16 @@ PageOneEpisode::PageOneEpisode(QWidget *parent) :
     ui->setupUi(this);
 
     SeriesController* controller = SeriesController::getInstance();
-    //Element episode = controller->getCurSerie().getList().at(data(Qt::UserRole).value<quint32>());
+    Serie serie = controller->getCurSerie();
+    //Element episode = serie.getList().at(episode.data(Qt::UserRole).value<int>());
 
     // Initialization of all the content of the page
-    //ui->title->setText();
+    /*
+    ui->title->setText(episode.getTitle());
+    ui->number->setText(episode.getNumber());
+    ui->duration->setText(serie.getDuration());
+    ui->synopsis->setText(episode.getSynopsis());
+    */
 }
 
 PageOneEpisode::~PageOneEpisode()
